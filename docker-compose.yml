@@ -1,0 +1,29 @@
+# Версия docker-compose
+version: '3'
+
+# Список наших сервисов (контейнеров)
+services:
+  nginx:
+    build: services/nginx
+    restart: unless-stopped
+    ports:
+    - "${NGINX_HOST_HTTP_PORT}:80"
+    - "${NGINX_HOST_HTTPS_PORT}:443"
+    volumes:
+    - ./services/nginx:/etc/nginx/conf.d
+    - "${APP_HOST_PATH}:/var/www"
+    - ./data/nginx:/var/log/nginx
+
+  php:
+    image: php:7.3-fpm
+    restart: unless-stopped
+    volumes:
+    - "${APP_HOST_PATH}:/var/www"
+
+  memcached:
+    image: bitnami/memcached:1.5.12
+    ports:
+      - "${MEMCACHED_HOST_PORT}:11211"
+    volumes:
+      - ./services/memcached/memcached.conf:/etc/memcached.conf
+      - ./data/memcached/memcached.log:/var/log/memcached.log

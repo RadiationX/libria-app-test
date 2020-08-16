@@ -1,0 +1,313 @@
+@link_color: #d83541;
+@white_color: #fff;
+@black_color: #000;
+@text_primary_color: #333;
+@text_second_color: #757575;
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+    clear: both;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    //font-family: sans-serif;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, Verdana, sans-serif;
+    font-size: 16px;
+    color: @text_primary_color;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.text_block{
+    margin: auto;
+    max-width: 480px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+.main {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 48px 48px 48px;
+    margin: 0 auto;
+    max-width: 1200px;
+
+    &.detail {
+        flex-wrap: nowrap;
+        flex-direction: column;
+    }
+}
+
+.header {
+    display: flex;
+    margin: 0 auto;
+    padding-left: 32px;
+    padding-right: 32px;
+    max-width: 1200px;
+
+    justify-content: space-between;
+
+    .navbar {
+        padding: 0 8px;
+        margin: 0;
+        display: block;
+        list-style: none;
+
+        > li {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            display: block;
+            float: left;
+            margin-right: 8px;
+
+            a {
+                display: block;
+                color: @link_color;
+                padding: 16px 8px;
+                text-decoration: none;
+            }
+
+        }
+
+        &.navbar-right {}
+    }
+}
+
+
+.logo {
+    margin-top: 48px;
+    margin-bottom: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .logo_img_shape {
+        height: 128px;
+        width: 128px;
+        padding: 20px;
+        background: #7e1b1b;
+        background: linear-gradient(90deg, #7e1b1b 0%, #ba3c41 100%);
+        border-radius: 50%;
+
+        .logo_img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    .logo_name {
+        margin-top: 12px;
+        display: inline-block;
+        font-size: 36px;
+    }
+
+    .logo_slogan {
+        color: @text_second_color;
+        margin-top: 8px;
+        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Light", Helvetica, Arial, Verdana, sans-serif;
+        font-weight: lighter;
+    }
+}
+
+.divider {
+    border-bottom: 1px solid #e8e8e8;
+    margin-top: -1px;
+}
+
+.app_link {
+    display: inline-block;
+    text-decoration: none;
+    color: @link_color;
+    position: relative;
+    padding-bottom: 12px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 16px;
+    max-width: 320px;
+    margin: 16px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    > div {
+        text-align: center;
+
+        .app_image {
+            max-width: 100%;
+            max-height: 220px;
+        }
+    }
+
+
+
+    .app_icon {
+        height: 24px;
+        margin-right: 8px;
+
+        &.ic_android {}
+
+        &.ic_apple {
+            margin-bottom: 4px
+        }
+
+        &.ic_laptop {}
+    }
+
+    .app_name_row {
+        margin-top: 24px;
+        display: flex;
+        justify-content: center;
+
+        word-wrap: break-word;
+        word-break: break-all;
+        overflow-wrap: break-word;
+        align-items: center;
+    }
+
+    .app_name {
+        max-width: 100%;
+        display: inline-block;
+    }
+
+    &.android_tv {
+        max-width: 360px;
+
+        > div .app_image {
+            max-height: 300px;
+        }
+    }
+
+    &.ios {
+        > div .app_image {}
+    }
+
+}
+
+.bottom_line {
+    &:after {
+        display: block;
+        height: 3px;
+        background: @link_color;
+        position: absolute;
+        border-radius: 3px 3px 0px 0px;
+        content: "";
+        left: 0px;
+        right: 0px;
+        opacity: 0;
+        bottom: 0;
+        -webkit-transition: opacity .2s ease-in-out, transform .2s ease-in-out;
+        -moz-transition: opacity .2s ease-in-out, transform .2s ease-in-out;
+        -ms-transition: opacity .2s ease-in-out, transform .2s ease-in-out;
+        transform-origin: bottom;
+        transform: scaleX(1.0) scaleY(0);
+    }
+
+    &:hover:after,
+    &.active:after {
+        opacity: 1;
+        transform: scaleX(1.0) scaleY(1.0);
+    }
+}
+
+.main.detail {
+    padding-top: 96px;
+
+    .image_wrapper {
+        margin: 0 48px;
+        text-align: center;
+
+        .app_image {
+            max-width: 100%;
+            max-height: 320px;
+        }
+    }
+
+    .app_name {
+        margin-top: 24px;
+        text-align: center;
+        font-size: 28px;
+    }
+
+    .app_desc {
+        text-align: center;
+        color: @text_second_color;
+        margin-top: 8px;
+        font-size: 14px;
+    }
+
+    .center_wrapper {
+        text-align: center;
+    }
+
+    a.btn_download {
+        margin-top: 24px;
+        text-decoration: none;
+        text-align: center;
+        color: @link_color;
+        border-radius: 24px;
+        line-height: 48px;
+        display: inline-block;
+        padding-left: 16px;
+        padding-right: 16px;
+        border: 1px solid @link_color;
+
+        &:hover {
+            background: fade(@link_color, 3%);
+        }
+
+
+        &.filled {
+            background: @link_color;
+            border: none;
+            color: @white_color;
+
+            &:hover {
+                background: mix(@black_color, @link_color, 5%);
+            }
+        }
+        
+        &.small{
+            margin-top: 12px;
+            line-height: 40px;
+        }
+
+        &.sub {
+            border: none;
+
+            &:hover {
+                background: none;
+                text-decoration: underline;
+            }
+        }
+        
+
+        .app_icon {
+            height: 24px;
+            vertical-align: text-bottom;
+            margin-bottom: -2px;
+            margin-right: 8px;
+
+            &.ic_android {}
+
+            &.ic_apple {
+                margin-bottom: 4px
+            }
+
+            &.ic_laptop {}
+        }
+    }
+}

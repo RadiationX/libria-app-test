@@ -18,6 +18,7 @@ services:
     image: php:7.3-fpm
     restart: unless-stopped
     volumes:
+    - ./services/php/:/usr/local/etc/php/conf.d/
     - "${APP_HOST_PATH}:/var/www"
 
   memcached:

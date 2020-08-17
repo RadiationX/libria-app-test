@@ -1,8 +1,6 @@
 <?php
 $tpl = $mustache->loadTemplate( 'app-item' );
 
-
-
 $appTypes = [
     'android_mobile' =>[
         'platform' => ['android'],
@@ -34,6 +32,29 @@ $appTypes = [
     ]
 ];
 
+$priorities = [
+    "macos" =>[
+        "desktop" => [
+            "cross_anilibrix",
+            "cross_qt",
+            "macos_catalyst"
+        ]
+    ],
+    "linux" =>[
+        "desktop" => [
+            "cross_anilibrix",
+            "cross_qt"
+        ]
+    ],
+    "window" =>[
+        "desktop" => [
+            "winten",
+            "cross_anilibrix",
+            "cross_qt"
+        ]
+    ]
+];
+
 $browserInfo = get_browser( null, true );
 
 function getClientPlatform( $browserInfo ) {
@@ -41,47 +62,92 @@ function getClientPlatform( $browserInfo ) {
     $platform = $browserInfo['platform'];
 
     if ( stripos( $platform, 'macos' ) !== false ) {
-        return "macos";
+        return 'macos';
     }
     if ( stripos( $platform, 'linux' ) !== false ) {
-        return "linux";
+        return 'linux';
     }
     if ( stripos( $platform, 'win' ) !== false ) {
-        return "windows";
+        return 'windows';
     }
-    
+
     if ( stripos( $platform, 'android' ) !== false ) {
-        return "android";
+        return 'android';
     }
     if ( stripos( $platform, 'ios' ) !== false ) {
-        return "ios";
+        return 'ios';
     }
 
     return 'unknown';
 }
 
-function getClientType($browserInfo){
+function getClientType( $browserInfo ) {
     $possibleDeviceTypes = ['unknown', 'Desktop', 'TV Device', 'Mobile Phone', 'Tablet', 'Mobile Device'];
     $type = $browserInfo['device_type'];
-    
+
     if ( stripos( $type, 'desktop' ) !== false ) {
-        return "desktop";
+        return 'desktop';
     }
     if ( stripos( $type, 'tv' ) !== false ) {
-        return "tv";
+        return 'tv';
     }
     if ( stripos( $type, 'mobile' ) !== false ) {
-        return "mobile";
+        return 'mobile';
     }
     if ( stripos( $type, 'tablet' ) !== false ) {
-        return "tablet";
+        return 'tablet';
     }
-    
+
     return 'unknown';
 }
 
-echo "platform: ".getClientPlatform($browserInfo).PHP_EOL;
-echo "type: ".getClientType($browserInfo);
+function getClientApps( $appTypes, $browserInfo ) {
+    $platform = getClientPlatform( $browserInfo );
+    $type = getClientType( $browserInfo );
+    $filtered = array_filter(
+        $appTypes,
+        function( $value, $key ) use ( $platform, $type ) {
+            $hasPlatform = in_array( $platform, $value['platform'] );
+            $hasType = in_array( $type, $value['type'] );
+            return $hasPlatform && $hasType;
+        },
+        ARRAY_FILTER_USE_BOTH
+    );
+
+    return array_keys($filtered);
+}
+
+function sortPopularity($clientApps, $priorities, $browserInfo){
+    $platform = getClientPlatform( $browserInfo );
+    $type = getClientType( $browserInfo );
+    if(array_key_exists($platform, $priorities) && array_key_exists($type, $priorities[$platform])){
+        $order = $priorities[$platform][$type];
+        usort($clientApps, function ($a, $b) use ($order){
+            echo "sort $a, $b <br>";
+            foreach($order as $value){
+                if($a == $value){
+                    return 0;
+                    break;
+                }
+                if($b == $value){
+                    return 1;
+                    break;
+                }
+            }
+            return 0;
+        });
+    }
+    return $clientApps;
+}
+
+echo 'platform: '.getClientPlatform( $browserInfo ).PHP_EOL;
+echo 'type: '.getClientType( $browserInfo ).PHP_EOL;
+$clientApps = getClientApps( $appTypes, $browserInfo );
+$sortedApps = sortPopularity($clientApps, $priorities, $browserInfo);
+echo json_encode( $clientApps );
+echo json_encode( $sortedApps );
+echo json_encode( $clientApps );
+
 
 echo $tpl->render( array(
     'link' => '/android/',
@@ -94,6 +160,6 @@ echo $tpl->render( array(
 
 ?>
 
-<main class = 'main clearfix'>
+<main class='main clearfix'>
 
 </main>

@@ -1,4 +1,7 @@
 <?php
+
+    require_once dirname(__FILE__) . '/../common/Consts.php';
+
     $mustache = DI::mustache();
     $tpl = $mustache->loadTemplate('app-item');
 
@@ -7,57 +10,57 @@
     $possibleDeviceTypes = ['unknown', 'Desktop', 'TV Device', 'Mobile Phone', 'Tablet', 'Mobile Device'];
 
     $appsData = [
-        'android_mobile' => [
+        APP_ANDROID => [
             'link' => '/app/android/',
-            'type' => 'android-mobile',
+            'type' => APP_ANDROID,
             'image' => 'app_android_mobile.png',
             'icon' => 'ic_android_primary.svg',
             'name' => 'AniLibria',
             'platform' => 'Android'
         ],
-        'android_tv' => [
+        APP_ANDROID_TV => [
             'link' => '/app/android-tv/',
-            'type' => 'android-mobile',
+            'type' => APP_ANDROID_TV,
             'image' => 'app_android_tv.png',
             'icon' => 'ic_android_primary.svg',
             'name' => 'AniLibria',
             'platform' => 'Android TV'
         ],
-        'ios' => [
+        APP_IOS => [
             'link' => '/app/ios/',
-            'type' => 'android-mobile',
+            'type' => APP_IOS,
             'image' => 'app_ios.png',
             'icon' => 'ic_apple_primary.svg',
             'name' => 'AniLibria',
             'platform' => 'iOS'
         ],
-        'macos_catalyst' => [
+        APP_MACOS_CATALYST => [
             'link' => '/app/catalyst/',
-            'type' => 'android-mobile',
+            'type' => APP_MACOS_CATALYST,
             'image' => 'app_macos_catalyst.png',
             'icon' => 'ic_apple_primary.svg',
             'name' => 'AniLibria Catalyst',
             'platform' => 'macOS'
         ],
-        'winten' => [
+        APP_WINTEN => [
             'link' => '/app/win/',
-            'type' => 'android-mobile',
+            'type' => APP_WINTEN,
             'image' => 'app_winten.png',
             'icon' => 'ic_windows_primary.svg',
             'name' => 'AniLibria',
             'platform' => 'Windows 10'
         ],
-        'cross_anilibrix' => [
+        APP_ANILIBRIX => [
             'link' => '/app/anilibrix/',
-            'type' => 'android-mobile',
+            'type' => APP_ANILIBRIX,
             'image' => 'app_cross_anilibrix.png',
             'icon' => 'ic_macbook_primary.svg',
             'name' => 'AniLibriX',
             'platform' => 'PC/Mac/Linux'
         ],
-        'cross_qt' => [
+        APP_QT => [
             'link' => '/app/qt/',
-            'type' => 'android-mobile',
+            'type' => APP_QT,
             'image' => 'app_cross_qt.png',
             'icon' => 'ic_macbook_primary.svg',
             'name' => 'AniLibria QT',
@@ -66,55 +69,55 @@
     ];
 
     $appTypes = [
-        'android_mobile' => [
-            'platform' => ['android'],
-            'type' => ['mobile']
+        APP_ANDROID => [
+            'platform' => [OS_ANDROID],
+            'type' => [TYPE_MOBILE]
         ],
-        'android_tv' => [
-            'platform' => ['android'],
-            'type' => ['tv']
+        APP_ANDROID_TV => [
+            'platform' => [OS_ANDROID],
+            'type' => [TYPE_TV]
         ],
-        'ios' => [
-            'platform' => ['ios'],
-            'type' => ['mobile', 'tablet']
+        APP_IOS => [
+            'platform' => [OS_IOS],
+            'type' => [TYPE_MOBILE, TYPE_TABLET]
         ],
-        'macos_catalyst' => [
-            'platform' => ['macos'],
-            'type' => ['desktop']
+        APP_MACOS_CATALYST => [
+            'platform' => [OS_MACOS],
+            'type' => [TYPE_DESKTOP]
         ],
-        'winten' => [
-            'platform' => ['windows'],
-            'type' => ['desktop']
+        APP_WINTEN => [
+            'platform' => [OS_WINDOWS],
+            'type' => [TYPE_DESKTOP]
         ],
-        'cross_anilibrix' => [
-            'platform' => ['macos', 'linux', 'windows'],
-            'type' => ['desktop']
+        APP_ANILIBRIX => [
+            'platform' => [OS_MACOS, OS_LINUX, OS_WINDOWS],
+            'type' => [TYPE_DESKTOP]
         ],
-        'cross_qt' => [
-            'platform' => ['macos', 'linux', 'windows'],
-            'type' => ['desktop']
+        APP_QT => [
+            'platform' => [OS_MACOS, OS_LINUX, OS_WINDOWS],
+            'type' => [TYPE_DESKTOP]
         ]
     ];
 
     $priorities = [
-        "macos" => [
-            "desktop" => [
-                "cross_anilibrix",
-                "cross_qt",
-                "macos_catalyst"
+        OS_MACOS => [
+            TYPE_DESKTOP => [
+                APP_ANILIBRIX,
+                APP_QT,
+                APP_MACOS_CATALYST
             ]
         ],
-        "linux" => [
-            "desktop" => [
-                "cross_anilibrix",
-                "cross_qt"
+        OS_LINUX => [
+            TYPE_DESKTOP => [
+                APP_ANILIBRIX,
+                APP_QT
             ]
         ],
-        "window" => [
-            "desktop" => [
-                "winten",
-                "cross_anilibrix",
-                "cross_qt"
+        OS_WINDOWS => [
+            TYPE_DESKTOP => [
+                APP_WINTEN,
+                APP_ANILIBRIX,
+                APP_QT
             ]
         ]
     ];
@@ -125,41 +128,41 @@
         $platform = $browserInfo['platform'];
 
         if (stripos($platform, 'macos') !== false) {
-            return 'macos';
+            return OS_MACOS;
         }
         if (stripos($platform, 'linux') !== false) {
-            return 'linux';
+            return OS_LINUX;
         }
         if (stripos($platform, 'win') !== false) {
-            return 'windows';
+            return OS_WINDOWS;
         }
         if (stripos($platform, 'android') !== false) {
-            return 'android';
+            return OS_ANDROID;
         }
         if (stripos($platform, 'ios') !== false) {
-            return 'ios';
+            return OS_IOS;
         }
 
-        return 'unknown';
+        return OS_UNKNOWN;
     }
 
     function getClientType($browserInfo) {
         $type = $browserInfo['device_type'];
 
         if (stripos($type, 'desktop') !== false) {
-            return 'desktop';
+            return TYPE_DESKTOP;
         }
         if (stripos($type, 'tv') !== false) {
-            return 'tv';
+            return TYPE_TV;
         }
         if (stripos($type, 'mobile') !== false) {
-            return 'mobile';
+            return TYPE_MOBILE;
         }
         if (stripos($type, 'tablet') !== false) {
-            return 'tablet';
+            return TYPE_TABLET;
         }
 
-        return 'unknown';
+        return TYPE_UNKNOWN;
     }
 
     function getClientApps($appTypes, $browserInfo) {

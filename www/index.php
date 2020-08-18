@@ -1,6 +1,6 @@
 <?
 
-    require_once dirname(__FILE__) . "/di/DI.php";
+    require_once dirname(__FILE__) . "/common/DI.php";
 
 
 ?>

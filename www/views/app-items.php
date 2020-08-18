@@ -1,100 +1,97 @@
 <?php
 
-    $mustache = DI::mustache();
-    $tpl = $mustache->loadTemplate('app-item');
-
     // из browscap
     $possiblePlatforms = ['unknown', 'Linux', 'Android', 'Win10', 'Win8.1', 'Win8', 'Win7', 'MacOSX', 'WinVista', 'iOS', 'Xbox OS 10', 'WinPhone10', 'Xbox OS 10 (Mobile View)', 'Win32', 'WinPhone8.1', 'ipadOS', 'Win64', 'Xbox OS', 'Xbox 360'];
     $possibleDeviceTypes = ['unknown', 'Desktop', 'TV Device', 'Mobile Phone', 'Tablet', 'Mobile Device'];
 
-    $appsData = [
-        APP_ANDROID => [
-            'link' => '/app/android/',
-            'type' => APP_ANDROID,
-            'image' => 'app_android_mobile.png',
-            'icon' => 'ic_android_primary.svg',
-            'name' => 'AniLibria',
-            'platform' => 'Android'
-        ],
-        APP_ANDROID_TV => [
-            'link' => '/app/android-tv/',
-            'type' => APP_ANDROID_TV,
-            'image' => 'app_android_tv.png',
-            'icon' => 'ic_android_primary.svg',
-            'name' => 'AniLibria',
-            'platform' => 'Android TV'
-        ],
-        APP_IOS => [
-            'link' => '/app/ios/',
-            'type' => APP_IOS,
-            'image' => 'app_ios.png',
-            'icon' => 'ic_apple_primary.svg',
-            'name' => 'AniLibria',
-            'platform' => 'iOS'
-        ],
-        APP_MACOS_CATALYST => [
-            'link' => '/app/catalyst/',
-            'type' => APP_MACOS_CATALYST,
-            'image' => 'app_macos_catalyst.png',
-            'icon' => 'ic_apple_primary.svg',
-            'name' => 'AniLibria Catalyst',
-            'platform' => 'macOS'
-        ],
-        APP_WINTEN => [
-            'link' => '/app/win/',
-            'type' => APP_WINTEN,
-            'image' => 'app_winten.png',
-            'icon' => 'ic_windows_primary.svg',
-            'name' => 'AniLibria',
-            'platform' => 'Windows 10'
-        ],
-        APP_ANILIBRIX => [
-            'link' => '/app/anilibrix/',
-            'type' => APP_ANILIBRIX,
-            'image' => 'app_cross_anilibrix.png',
-            'icon' => 'ic_macbook_primary.svg',
-            'name' => 'AniLibriX',
-            'platform' => 'PC/Mac/Linux'
-        ],
-        APP_QT => [
-            'link' => '/app/qt/',
-            'type' => APP_QT,
-            'image' => 'app_cross_qt.png',
-            'icon' => 'ic_macbook_primary.svg',
-            'name' => 'AniLibria QT',
-            'platform' => 'PC/Mac/Linux'
-        ]
+    $appList = [
+        APP_ANDROID => new AppItem(
+            '/app/android/',
+            APP_ANDROID,
+            'app_android_mobile.png',
+            'ic_android_primary.svg',
+            'AniLibria',
+            'Android'
+        ),
+        APP_ANDROID_TV => new AppItem(
+            '/app/android-tv/',
+            APP_ANDROID_TV,
+            'app_android_tv.png',
+            'ic_android_primary.svg',
+            'AniLibria',
+            'Android TV'
+        ),
+        APP_IOS => new AppItem(
+            '/app/ios/',
+            APP_IOS,
+            'app_ios.png',
+            'ic_apple_primary.svg',
+            'AniLibria',
+            'iOS'
+        ),
+        APP_MACOS_CATALYST => new AppItem(
+            '/app/catalyst/',
+            APP_MACOS_CATALYST,
+            'app_macos_catalyst.png',
+            'ic_apple_primary.svg',
+            'AniLibria Catalyst',
+            'macOS'
+        ),
+        APP_WINTEN => new AppItem(
+            '/app/win/',
+            APP_WINTEN,
+            'app_winten.png',
+            'ic_windows_primary.svg',
+            'AniLibria',
+            'Windows 10'
+        ),
+        APP_ANILIBRIX => new AppItem(
+            '/app/anilibrix/',
+            APP_ANILIBRIX,
+            'app_cross_anilibrix.png',
+            'ic_macbook_primary.svg',
+            'AniLibriX',
+            'PC/Mac/Linux'
+        ),
+        APP_QT => new AppItem(
+            '/app/qt/',
+            APP_QT,
+            'app_cross_qt.png',
+            'ic_macbook_primary.svg',
+            'AniLibria QT',
+            'PC/Mac/Linux'
+        )
     ];
 
-    $appTypes = [
-        APP_ANDROID => [
-            'platform' => [OS_ANDROID],
-            'type' => [TYPE_MOBILE]
-        ],
-        APP_ANDROID_TV => [
-            'platform' => [OS_ANDROID],
-            'type' => [TYPE_TV]
-        ],
-        APP_IOS => [
-            'platform' => [OS_IOS],
-            'type' => [TYPE_MOBILE, TYPE_TABLET]
-        ],
-        APP_MACOS_CATALYST => [
-            'platform' => [OS_MACOS],
-            'type' => [TYPE_DESKTOP]
-        ],
-        APP_WINTEN => [
-            'platform' => [OS_WINDOWS],
-            'type' => [TYPE_DESKTOP]
-        ],
-        APP_ANILIBRIX => [
-            'platform' => [OS_MACOS, OS_LINUX, OS_WINDOWS],
-            'type' => [TYPE_DESKTOP]
-        ],
-        APP_QT => [
-            'platform' => [OS_MACOS, OS_LINUX, OS_WINDOWS],
-            'type' => [TYPE_DESKTOP]
-        ]
+    $appReqs = [
+        APP_ANDROID => new AppRequirements(
+            [OS_ANDROID],
+            [TYPE_MOBILE]
+        ),
+        APP_ANDROID_TV => new AppRequirements(
+            [OS_ANDROID],
+            [TYPE_TV]
+        ),
+        APP_IOS => new AppRequirements(
+            [OS_IOS],
+            [TYPE_MOBILE, TYPE_TABLET]
+        ),
+        APP_MACOS_CATALYST => new AppRequirements(
+            [OS_MACOS],
+            [TYPE_DESKTOP]
+        ),
+        APP_WINTEN => new AppRequirements(
+            [OS_WINDOWS],
+            [TYPE_DESKTOP]
+        ),
+        APP_ANILIBRIX => new AppRequirements(
+            [OS_MACOS, OS_LINUX, OS_WINDOWS],
+            [TYPE_DESKTOP]
+        ),
+        APP_QT => new AppRequirements(
+            [OS_MACOS, OS_LINUX, OS_WINDOWS],
+            [TYPE_DESKTOP]
+        )
     ];
 
     $priorities = [
@@ -163,14 +160,14 @@
         return TYPE_UNKNOWN;
     }
 
-    function getClientApps($appTypes, $browserInfo) {
+    function getClientApps($appReqs, $browserInfo) {
         $platform = getClientPlatform($browserInfo);
         $type = getClientType($browserInfo);
         $filtered = array_filter(
-            $appTypes,
-            function ($value) use ($platform, $type) {
-                $hasPlatform = in_array($platform, $value['platform']);
-                $hasType = in_array($type, $value['type']);
+            $appReqs,
+            function ($req) use ($platform, $type) {
+                $hasPlatform = in_array($platform, $req->getOs());
+                $hasType = in_array($type, $req->getType());
                 return $hasPlatform && $hasType;
             },
             ARRAY_FILTER_USE_BOTH
@@ -199,9 +196,9 @@
         return $clientApps;
     }
 
-    $clientAppKeys = getClientApps($appTypes, $browserInfo);
+    $clientAppKeys = getClientApps($appReqs, $browserInfo);
     $sortedAppsKeys = sortByPriority($clientAppKeys, $priorities, $browserInfo);
-    $allAppKeys = array_keys($appTypes);
+    $allAppKeys = array_keys($appReqs);
     $otherAppsKeys = array_values(array_diff($allAppKeys, $sortedAppsKeys));
 
 ?>
@@ -209,13 +206,15 @@
 <main class='main clearfix'>
 
     <?php
+        $mustache = DI::mustache();
+        $tpl = $mustache->loadTemplate('app-item');
+
         foreach ($sortedAppsKeys as $appKey) {
-            echo $tpl->render($appsData[$appKey]);
+            echo $tpl->render($appList[$appKey]);
         }
-    ?>
-    <?php
+
         foreach ($otherAppsKeys as $appKey) {
-            echo $tpl->render($appsData[$appKey]);
+            echo $tpl->render($appList[$appKey]);
         }
     ?>
 

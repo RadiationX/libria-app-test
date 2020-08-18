@@ -1,13 +1,10 @@
-<a href="{{link}}" class="app_link bottom_line {{type}}">
+<a href="{{getLink}}" class="app_link bottom_line {{getType}}">
     <div>
-        <img src="res/images/{{image}}" class="app_image" alt="image">
+        <img src="res/images/{{getImage}}" class="app_image" alt="image">
     </div>
 
     <span class="app_name_row">
-        <img src="res/icons/{{icon}}" class="app_icon" alt="icon">
-        <span class="app_name">
-            {{name}} для <b>{{platform}}</b>
-        </span>
+        <img src="res/icons/{{getIcon}}" class="app_icon" alt="icon">
+        <span class="app_name">{{getName}} для <b>{{getPlatforms}}</b></span>
     </span>
-
 </a>

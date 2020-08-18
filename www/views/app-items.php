@@ -1,7 +1,5 @@
 <?php
 
-    require_once dirname(__FILE__) . '/../common/Consts.php';
-
     $mustache = DI::mustache();
     $tpl = $mustache->loadTemplate('app-item');
 

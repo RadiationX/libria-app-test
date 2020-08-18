@@ -21,4 +21,3 @@
     const TYPE_DESKTOP = 'desktop';
     const TYPE_UNKNOWN = 'unknown';
 
-?>

@@ -1,8 +1,6 @@
 <?
-
-    require_once dirname(__FILE__) . "/common/DI.php";
-
-
+    require_once dirname(__FILE__) . '/common/Consts.php';
+    require_once dirname(__FILE__) . '/common/DI.php';
 ?>
 
 

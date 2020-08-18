@@ -9,10 +9,9 @@
         private static $mustache = null;
 
         public static function appListController() {
-            if (self::$appListController == null) {
-                self::$appListController = new  AppListController();
-            }
-            return self::$appListController;
+            return self::byLazy(self::$appListController, function () {
+                new  AppListController();
+            });
         }
 
         public static function router() {
@@ -50,4 +49,3 @@
         }
     }
 
-?>

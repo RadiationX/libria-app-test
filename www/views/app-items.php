@@ -201,21 +201,28 @@
     $allAppKeys = array_keys($appReqs);
     $otherAppsKeys = array_values(array_diff($allAppKeys, $sortedAppsKeys));
 
-?>
 
-<main class='main clearfix'>
+    $clientApps = array_map(function ($key) use ($appList) {
+        return $appList[$key];
+    }, $clientAppKeys);
 
-    <?php
-        $mustache = DI::mustache();
-        $tpl = $mustache->loadTemplate('app-item');
+    $otherApps = array_map(function ($key) use ($appList) {
+        return $appList[$key];
+    }, $sortedAppsKeys);
 
-        foreach ($sortedAppsKeys as $appKey) {
-            echo $tpl->render($appList[$appKey]);
+
+    $mustache = DI::mustache();
+    $tplList = $mustache->loadTemplate('app-list');
+    $tplItem = $mustache->loadTemplate('app-item');
+
+    echo $tplList->render([
+        'clientApps' => $sortedAppsKeys,
+        'otherApps' => $otherAppsKeys,
+        'hasOther' => !empty($otherAppsKeys),
+        'itemTplWrapper' => function ($text, Mustache_LambdaHelper $helper) use ($appList, $tplItem) {
+            $appKey = trim($helper->render($text));
+            $app = $appList[$appKey];
+            return $tplItem->render($app);
         }
+    ]);
 
-        foreach ($otherAppsKeys as $appKey) {
-            echo $tpl->render($appList[$appKey]);
-        }
-    ?>
-
-</main>

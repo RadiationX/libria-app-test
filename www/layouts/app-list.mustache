@@ -1,0 +1,17 @@
+<main class='main clearfix'>
+
+    {{# clientApps }}
+        {{# itemTplWrapper }}
+            {{ . }}
+        {{/ itemTplWrapper }}
+    {{/ clientApps }}
+
+    {{# hasOther }}
+        {{# otherApps }}
+            {{# itemTplWrapper }}
+                {{ . }}
+            {{/ itemTplWrapper }}
+        {{/ otherApps }}
+    {{/ hasOther }}
+
+</main>

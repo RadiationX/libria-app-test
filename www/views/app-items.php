@@ -1,5 +1,5 @@
 <?php
-    global $mustache;
+    $mustache = DI::mustache();
     $tpl = $mustache->loadTemplate('app-item');
 
     // из browscap
@@ -8,7 +8,7 @@
 
     $appsData = [
         'android_mobile' => [
-            'link' => '/android/',
+            'link' => '/app/android/',
             'type' => 'android-mobile',
             'image' => 'app_android_mobile.png',
             'icon' => 'ic_android_primary.svg',
@@ -16,7 +16,7 @@
             'platform' => 'Android'
         ],
         'android_tv' => [
-            'link' => '/android-tv/',
+            'link' => '/app/android-tv/',
             'type' => 'android-mobile',
             'image' => 'app_android_tv.png',
             'icon' => 'ic_android_primary.svg',
@@ -24,7 +24,7 @@
             'platform' => 'Android TV'
         ],
         'ios' => [
-            'link' => '/ios/',
+            'link' => '/app/ios/',
             'type' => 'android-mobile',
             'image' => 'app_ios.png',
             'icon' => 'ic_apple_primary.svg',
@@ -32,7 +32,7 @@
             'platform' => 'iOS'
         ],
         'macos_catalyst' => [
-            'link' => '/catalyst/',
+            'link' => '/app/catalyst/',
             'type' => 'android-mobile',
             'image' => 'app_macos_catalyst.png',
             'icon' => 'ic_apple_primary.svg',
@@ -40,7 +40,7 @@
             'platform' => 'macOS'
         ],
         'winten' => [
-            'link' => '/win/',
+            'link' => '/app/win/',
             'type' => 'android-mobile',
             'image' => 'app_winten.png',
             'icon' => 'ic_windows_primary.svg',
@@ -48,7 +48,7 @@
             'platform' => 'Windows 10'
         ],
         'cross_anilibrix' => [
-            'link' => '/anilibrix/',
+            'link' => '/app/anilibrix/',
             'type' => 'android-mobile',
             'image' => 'app_cross_anilibrix.png',
             'icon' => 'ic_macbook_primary.svg',
@@ -56,7 +56,7 @@
             'platform' => 'PC/Mac/Linux'
         ],
         'cross_qt' => [
-            'link' => '/qt/',
+            'link' => '/app/qt/',
             'type' => 'android-mobile',
             'image' => 'app_cross_qt.png',
             'icon' => 'ic_macbook_primary.svg',

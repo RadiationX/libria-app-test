@@ -4,25 +4,79 @@
 
     class DI {
 
-        private static $appListController = null;
-        private static $router = null;
-        private static $mustache = null;
+        private static ?Router $router = null;
+        private static ?Mustache_Engine $mustache = null;
+        private static ?BrowserInfo $browserInfo = null;
+        private static ?AppsTargetHelper $appsTargetHelper = null;
 
-        public static function appListController() {
-            return self::byLazy(self::$appListController, function () {
-                new  AppListController();
+        private static ?AppListController $appListController = null;
+        private static ?AppListView $appListView = null;
+        private static ?AppListSource $appListSource = null;
+
+        /**
+         * @return AppListSource
+         */
+        public static function appListSource(): AppListSource {
+            return Utils::lazyInit(self::$appListSource, function () {
+                return new AppListSource();
             });
         }
 
-        public static function router() {
-            return self::byLazy(self::$router, function () {
+        /**
+         * @return AppListView
+         */
+        public static function appListView(): AppListView {
+            return Utils::lazyInit(self::$appListView, function () {
+                return new AppListView(self::mustache());
+            });
+        }
+
+        /**
+         * @return AppListController
+         */
+        public static function appListController(): AppListController {
+            return Utils::lazyInit(self::$appListController, function () {
+                return new AppListController(
+                    self::appListView(),
+                    self::appListSource(),
+                    self::appsTargetHelper()
+                );
+            });
+        }
+
+        /**
+         * @return AppsTargetHelper
+         */
+        public static function appsTargetHelper(): AppsTargetHelper {
+            return Utils::lazyInit(self::$appsTargetHelper, function () {
+                return new AppsTargetHelper(self::browserInfo());
+            });
+        }
+
+        /**
+         * @return BrowserInfo
+         */
+        public static function browserInfo(): BrowserInfo {
+            return Utils::lazyInit(self::$browserInfo, function () {
+                return new BrowserInfo();
+            });
+        }
+
+        /**
+         * @return Router
+         */
+        public static function router(): Router {
+            return Utils::lazyInit(self::$router, function () {
                 require_once dirname(__FILE__) . '/../deps/router/src/Bramus/Router/Router.php';
                 return new Router();
             });
         }
 
-        public static function mustache() {
-            return self::byLazy(self::$mustache, function () {
+        /**
+         * @return Mustache_Engine
+         */
+        public static function mustache(): Mustache_Engine {
+            return Utils::lazyInit(self::$mustache, function () {
                 require_once dirname(__FILE__) . '/../deps/mustache/src/Mustache/Autoloader.php';
                 Mustache_Autoloader::register();
                 $loader = new Mustache_Loader_FilesystemLoader(dirname(__FILE__) . '/../layouts');
@@ -41,11 +95,5 @@
             });
         }
 
-        private static function byLazy($variable, $fn) {
-            if ($variable == null && is_callable($fn)) {
-                $variable = call_user_func($fn);
-            }
-            return $variable;
-        }
     }
 

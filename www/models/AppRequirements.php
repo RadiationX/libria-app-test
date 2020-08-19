@@ -3,13 +3,13 @@
 
     class AppRequirements {
 
-        private $os = array(OS_UNKNOWN);
-        private $type = array(TYPE_UNKNOWN);
+        private array $os;
+        private array $type;
 
         /**
          * AppRequirements constructor.
-         * @param array $os
-         * @param array $type
+         * @param string[] $os
+         * @param string[] $type
          */
         public function __construct(array $os, array $type) {
             $this->os = $os;
@@ -17,16 +17,16 @@
         }
 
         /**
-         * @return array
+         * @return string[]
          */
-        public function getOs() {
+        public function getOsList() {
             return $this->os;
         }
 
         /**
-         * @return array
+         * @return string[]
          */
-        public function getType() {
+        public function getTypeList() {
             return $this->type;
         }
     }

@@ -2,12 +2,12 @@
 
 
     class AppItem {
-        private $link = "";
-        private $type = TYPE_UNKNOWN;
-        private $image = "";
-        private $icon = "";
-        private $name = "";
-        private $platforms = "";
+        private string $link;
+        private string $type;
+        private string $image;
+        private string $icon;
+        private string $name;
+        private string $platforms;
 
         /**
          * AppItem constructor.

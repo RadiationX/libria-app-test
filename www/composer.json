@@ -1,0 +1,16 @@
+{
+  "name": "vendor_name/www",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "radiationx",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+    "mustache/mustache": "~2.5",
+    "bramus/router": "~1.4"
+  }
+}

@@ -4,27 +4,39 @@ version: '3'
 # Список наших сервисов (контейнеров)
 services:
   nginx:
+    container_name: libria_nginx
     build: services/nginx
     restart: unless-stopped
     ports:
-    - "${NGINX_HOST_HTTP_PORT}:80"
-    - "${NGINX_HOST_HTTPS_PORT}:443"
+      - "${NGINX_HOST_HTTP_PORT}:80"
+      - "${NGINX_HOST_HTTPS_PORT}:443"
     volumes:
-    - ./services/nginx:/etc/nginx/conf.d
-    - "${APP_HOST_PATH}:/var/www"
-    - ./data/nginx:/var/log/nginx
+      - ./services/nginx:/etc/nginx/conf.d
+      - ./www:/var/www
+      - ./data/nginx:/var/log/nginx
 
   php:
+    container_name: libria_php
     image: php:7.4-fpm
     restart: unless-stopped
     volumes:
-    - ./services/php/:/usr/local/etc/php/conf.d/
-    - "${APP_HOST_PATH}:/var/www"
+      - ./services/php/:/usr/local/etc/php/conf.d/
+      - ./www:/var/www
 
   memcached:
+    container_name: libria_memcached
     image: bitnami/memcached:1.5.12
     ports:
       - "${MEMCACHED_HOST_PORT}:11211"
     volumes:
       - ./services/memcached/memcached.conf:/etc/memcached.conf
       - ./data/memcached/memcached.log:/var/log/memcached.log
+
+  composer:
+    container_name: libria_composer
+    image: composer:1.10
+    restart: "no"
+    volumes:
+      - ./www:/var/www
+    working_dir: /var/www
+    command: bash -c "composer update --lock"

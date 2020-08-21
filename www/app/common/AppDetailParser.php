@@ -28,7 +28,7 @@
             $target = Consts::appTargets()[$id];
             $modifications = array_map(function ($itemJson) {
                 return self::parseModification($itemJson);
-            }, $json["modifications"]);
+            }, $json["modifications"] ?: []);
 
             return new AppDetail(
                 $id,
@@ -40,17 +40,16 @@
             );
         }
 
-
         /**
          * @param array $json
          * @return AppModification
          * @throws Exception
          */
-        static function parseModification(array $json): AppModification {
+        private static function parseModification(array $json): AppModification {
             $os = self::requireOs($json["os"]);
             $sources = array_map(function ($itemJson) {
                 return self::parseSource($itemJson);
-            }, $json["sources"]);
+            }, $json["sources"] ?: []);
             return new AppModification(
                 $os,
                 $json["version"],
@@ -67,7 +66,7 @@
          * @return AppSource
          * @throws Exception
          */
-        static function parseSource(array $json): AppSource {
+        private static function parseSource(array $json): AppSource {
             $type = self::requireSourceType($json["type"]);
             return new AppSource(
                 $json["title"],
@@ -77,58 +76,71 @@
             );
         }
 
-
         /**
          * @param string $id
          * @return string
          * @throws Exception
          */
-        static function requireAppId(string $id): string {
+        private static function requireAppId(string $id): string {
             $allAppKeys = array_keys(Consts::appTargets());
             $valid = in_array($id, $allAppKeys, true);
             if (!$valid) {
-                throw new Exception("unknown app id $id");
+                throw self::valueError("app id", $id);
             }
             return $id;
         }
 
         /**
-         * @param string $format
+         * @param ?string $format
          * @return string
          * @throws Exception
          */
-        static function requireFormat(string $format): string {
+        private static function requireFormat(?string $format): string {
             $valid = $format === self::$FORMAT_V_1_0;
-            if ($valid) {
-                throw new Exception("unknown format $format");
+            if (!$valid) {
+                throw self::valueError("format", $format);
             }
             return $format;
         }
 
         /**
-         * @param string $os
+         * @param ?string $os
          * @return string
          * @throws Exception
          */
-        static function requireOs(string $os): string {
+        private static function requireOs(string $os): string {
             $valid = false;
             if (!$valid) {
-                throw new Exception("unknown os $os");
+                throw self::valueError("os", $os);
             }
             return $os;
         }
 
         /**
-         * @param string $type
+         * @param ?string $type
          * @return string
          * @throws Exception
          */
-        static function requireSourceType(string $type): string {
+        private static function requireSourceType(string $type): string {
             $valid = $type === self::$SOURCE_TYPE_FILE || $type === self::$SOURCE_TYPE_SITE;
             if (!$valid) {
-                throw new Exception("unknown source type $type");
+                throw self::valueError("source type", $type);
             }
             return $type;
+        }
+
+        /**
+         * @param string $field
+         * @param ?string $value
+         * @return Exception
+         */
+        private static function valueError(string $field, ?string $value): Exception {
+            $message = sprintf(
+                "unknown %s '%s'",
+                $field,
+                var_export($value, true)
+            );
+            return new Exception($message);
         }
 
     }

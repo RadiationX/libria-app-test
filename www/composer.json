@@ -12,5 +12,10 @@
   "require": {
     "mustache/mustache": "~2.5",
     "bramus/router": "~1.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "app\\": "app/"
+    }
   }
 }

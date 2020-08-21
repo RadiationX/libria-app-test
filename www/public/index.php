@@ -1,14 +1,8 @@
 <?
-    require_once dirname(__FILE__) . '/common/Consts.php';
-    require_once dirname(__FILE__) . '/models/AppItem.php';
-    require_once dirname(__FILE__) . '/models/AppRequirements.php';
-    require_once dirname(__FILE__) . '/common/Utils.php';
-    require_once dirname(__FILE__) . '/common/BrowserInfo.php';
-    require_once dirname(__FILE__) . '/common/AppsTargetHelper.php';
-    require_once dirname(__FILE__) . '/common/DI.php';
-    require_once dirname(__FILE__) . '/controllers/AppListController.php';
-    require_once dirname(__FILE__) . '/views/AppListView.php';
-    require_once dirname(__FILE__) . '/sources/AppListSource.php';
+    require dirname(__DIR__) . '/vendor/autoload.php';
+    require dirname(__DIR__) . '/app/common/Consts.php';
+
+    use app\common\DI;
 ?>
 
 
@@ -26,7 +20,7 @@
 <?
 
 
-    require('views/header.php');
+    require dirname(__DIR__) . '/app/views/header.php';
 
     $router = DI::router();
 
@@ -35,7 +29,7 @@
     });
 
     $router->get('/', function () {
-        require('views/logo.php');
+        require dirname(__DIR__) . '/app/views/logo.php';
         $appListController = DI::appListController();
         echo $appListController->showList();
     });

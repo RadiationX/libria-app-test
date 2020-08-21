@@ -1,5 +1,10 @@
 <?php
 
+    namespace app\sources;
+
+    use app\common\Consts;
+    use app\common\Utils;
+    use app\models\AppItem;
 
     class AppListSource {
 
@@ -19,57 +24,57 @@
          */
         private function fetchList() {
             return [
-                APP_ANDROID => new AppItem(
+                Consts::APP_ANDROID => new AppItem(
                     '/app/android/',
-                    APP_ANDROID,
+                    Consts::APP_ANDROID,
                     'app_android_mobile.png',
                     'ic_android_primary.svg',
                     'AniLibria',
                     'Android'
                 ),
-                APP_ANDROID_TV => new AppItem(
+                Consts::APP_ANDROID_TV => new AppItem(
                     '/app/android-tv/',
-                    APP_ANDROID_TV,
+                    Consts::APP_ANDROID_TV,
                     'app_android_tv.png',
                     'ic_android_primary.svg',
                     'AniLibria',
                     'Android TV'
                 ),
-                APP_IOS => new AppItem(
+                Consts::APP_IOS => new AppItem(
                     '/app/ios/',
-                    APP_IOS,
+                    Consts::APP_IOS,
                     'app_ios.png',
                     'ic_apple_primary.svg',
                     'AniLibria',
                     'iOS'
                 ),
-                APP_MACOS_CATALYST => new AppItem(
+                Consts::APP_MACOS_CATALYST => new AppItem(
                     '/app/catalyst/',
-                    APP_MACOS_CATALYST,
+                    Consts::APP_MACOS_CATALYST,
                     'app_macos_catalyst.png',
                     'ic_apple_primary.svg',
                     'AniLibria Catalyst',
                     'macOS'
                 ),
-                APP_WINTEN => new AppItem(
+                Consts::APP_WINTEN => new AppItem(
                     '/app/win/',
-                    APP_WINTEN,
+                    Consts::APP_WINTEN,
                     'app_winten.png',
                     'ic_windows_primary.svg',
                     'AniLibria',
                     'Windows 10'
                 ),
-                APP_ANILIBRIX => new AppItem(
+                Consts::APP_ANILIBRIX => new AppItem(
                     '/app/anilibrix/',
-                    APP_ANILIBRIX,
+                    Consts::APP_ANILIBRIX,
                     'app_cross_anilibrix.png',
                     'ic_macbook_primary.svg',
                     'AniLibriX',
                     'PC/Mac/Linux'
                 ),
-                APP_QT => new AppItem(
+                Consts::APP_QT => new AppItem(
                     '/app/qt/',
-                    APP_QT,
+                    Consts::APP_QT,
                     'app_cross_qt.png',
                     'ic_macbook_primary.svg',
                     'AniLibria QT',

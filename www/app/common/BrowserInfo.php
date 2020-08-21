@@ -1,5 +1,6 @@
 <?php
 
+    namespace app\common;
 
     class BrowserInfo {
 
@@ -32,25 +33,25 @@
             $os = $this->fetchBrowserInfo()['platform'];
 
             if (empty($os)) {
-                return OS_UNKNOWN;
+                return Consts::OS_UNKNOWN;
             }
             if (stripos($os, 'macos') !== false) {
-                return OS_MACOS;
+                return Consts::OS_MACOS;
             }
             if (stripos($os, 'linux') !== false) {
-                return OS_LINUX;
+                return Consts::OS_LINUX;
             }
             if (stripos($os, 'win') !== false) {
-                return OS_WINDOWS;
+                return Consts::OS_WINDOWS;
             }
             if (stripos($os, 'android') !== false) {
-                return OS_ANDROID;
+                return Consts::OS_ANDROID;
             }
             if (stripos($os, 'ios') !== false) {
-                return OS_IOS;
+                return Consts::OS_IOS;
             }
 
-            return OS_UNKNOWN;
+            return Consts::OS_UNKNOWN;
         }
 
         /**
@@ -60,22 +61,22 @@
             $type = $this->fetchBrowserInfo()['device_type'];
 
             if (empty($type)) {
-                return TYPE_UNKNOWN;
+                return Consts::TYPE_UNKNOWN;
             }
             if (stripos($type, 'desktop') !== false) {
-                return TYPE_DESKTOP;
+                return Consts::TYPE_DESKTOP;
             }
             if (stripos($type, 'tv') !== false) {
-                return TYPE_TV;
+                return Consts::TYPE_TV;
             }
             if (stripos($type, 'mobile') !== false) {
-                return TYPE_MOBILE;
+                return Consts::TYPE_MOBILE;
             }
             if (stripos($type, 'tablet') !== false) {
-                return TYPE_TABLET;
+                return Consts::TYPE_TABLET;
             }
 
-            return TYPE_UNKNOWN;
+            return Consts::TYPE_UNKNOWN;
         }
 
         /**

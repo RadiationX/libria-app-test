@@ -1,5 +1,11 @@
 <?php
 
+    namespace app\views;
+
+    use app\models\AppItem;
+    use Mustache_Engine;
+    use Mustache_LambdaHelper;
+    use Mustache_Template;
 
     class AppListView {
 

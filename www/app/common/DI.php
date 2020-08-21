@@ -1,6 +1,14 @@
 <?php
 
+    namespace app\common;
+
+    use app\controllers\AppListController;
+    use app\sources\AppListSource;
+    use app\views\AppListView;
     use Bramus\Router\Router;
+    use Mustache_Engine;
+    use Mustache_Loader_FilesystemLoader;
+    use Mustache_Logger_StreamLogger;
 
     class DI {
 
@@ -67,7 +75,6 @@
          */
         public static function router(): Router {
             return Utils::lazyInit(self::$router, function () {
-                require_once dirname(__FILE__) . '/../deps/router/src/Bramus/Router/Router.php';
                 return new Router();
             });
         }
@@ -77,10 +84,8 @@
          */
         public static function mustache(): Mustache_Engine {
             return Utils::lazyInit(self::$mustache, function () {
-                require_once dirname(__FILE__) . '/../deps/mustache/src/Mustache/Autoloader.php';
-                Mustache_Autoloader::register();
-                $loader = new Mustache_Loader_FilesystemLoader(dirname(__FILE__) . '/../layouts');
-                $pLoader = new Mustache_Loader_FilesystemLoader(dirname(__FILE__) . '/../layouts/partials');
+                $loader = new Mustache_Loader_FilesystemLoader(dirname(__DIR__)  . '/layouts');
+                $pLoader = new Mustache_Loader_FilesystemLoader(dirname(__DIR__)  . '/layouts/partials');
                 $logger = new Mustache_Logger_StreamLogger('php://stderr');
                 return new Mustache_Engine(array(
                     'loader' => $loader,

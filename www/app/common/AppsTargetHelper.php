@@ -1,62 +1,6 @@
 <?php
 
-    // из browscap
-    $possiblePlatforms = ['unknown', 'Linux', 'Android', 'Win10', 'Win8.1', 'Win8', 'Win7', 'MacOSX', 'WinVista', 'iOS', 'Xbox OS 10', 'WinPhone10', 'Xbox OS 10 (Mobile View)', 'Win32', 'WinPhone8.1', 'ipadOS', 'Win64', 'Xbox OS', 'Xbox 360'];
-    $possibleDeviceTypes = ['unknown', 'Desktop', 'TV Device', 'Mobile Phone', 'Tablet', 'Mobile Device'];
-
-    $APP_REQS = [
-        APP_ANDROID => new AppRequirements(
-            [OS_ANDROID],
-            [TYPE_MOBILE]
-        ),
-        APP_ANDROID_TV => new AppRequirements(
-            [OS_ANDROID],
-            [TYPE_TV]
-        ),
-        APP_IOS => new AppRequirements(
-            [OS_IOS],
-            [TYPE_MOBILE, TYPE_TABLET]
-        ),
-        APP_MACOS_CATALYST => new AppRequirements(
-            [OS_MACOS],
-            [TYPE_DESKTOP]
-        ),
-        APP_WINTEN => new AppRequirements(
-            [OS_WINDOWS],
-            [TYPE_DESKTOP]
-        ),
-        APP_ANILIBRIX => new AppRequirements(
-            [OS_MACOS, OS_LINUX, OS_WINDOWS],
-            [TYPE_DESKTOP]
-        ),
-        APP_QT => new AppRequirements(
-            [OS_MACOS, OS_LINUX, OS_WINDOWS],
-            [TYPE_DESKTOP]
-        )
-    ];
-
-    $APPS_ORDER = [
-        OS_MACOS => [
-            TYPE_DESKTOP => [
-                APP_ANILIBRIX,
-                APP_QT,
-                APP_MACOS_CATALYST
-            ]
-        ],
-        OS_LINUX => [
-            TYPE_DESKTOP => [
-                APP_ANILIBRIX,
-                APP_QT
-            ]
-        ],
-        OS_WINDOWS => [
-            TYPE_DESKTOP => [
-                APP_WINTEN,
-                APP_ANILIBRIX,
-                APP_QT
-            ]
-        ]
-    ];
+    namespace app\common;
 
     class AppsTargetHelper {
 
@@ -97,9 +41,8 @@
          * @return string[]
          */
         private function fetchClientAppKeys() {
-            global $APP_REQS;
             $filtered = array_filter(
-                $APP_REQS,
+                Consts::appReqs(),
                 function ($req) {
                     $hasPlatform = in_array($this->os, $req->getOsList());
                     $hasType = in_array($this->type, $req->getTypeList());
@@ -117,9 +60,8 @@
          * @return string[]
          */
         private function fetchOtherAppKeys() {
-            global $APP_REQS;
             $clientAppKeys = $this->getClientAppKeys();
-            $allAppKeys = array_keys($APP_REQS);
+            $allAppKeys = array_keys(Consts::appReqs());
             return array_values(array_diff($allAppKeys, $clientAppKeys));
         }
 
@@ -128,12 +70,12 @@
          * @return string[]
          */
         private function sortByOrder($targetAppKeys) {
-            global $APPS_ORDER;
-            if (!array_key_exists($this->os, $APPS_ORDER)
-                || !array_key_exists($this->os, $APPS_ORDER[$this->os])) {
+            $appsOrder = Consts::appsOrder();
+            if (!array_key_exists($this->os, $appsOrder)
+                || !array_key_exists($this->os, $appsOrder[$this->os])) {
                 return $targetAppKeys;
             }
-            $order = $APPS_ORDER[$this->os][$this->type];
+            $order = $appsOrder[$this->os][$this->type];
             usort($targetAppKeys, function ($a, $b) use ($order) {
                 foreach ($order as $value) {
                     if ($a == $value) {

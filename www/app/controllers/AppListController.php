@@ -1,5 +1,10 @@
 <?php
 
+    namespace app\controllers;
+
+    use app\common\AppsTargetHelper;
+    use app\sources\AppListSource;
+    use app\views\AppListView;
 
     class AppListController {
 

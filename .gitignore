@@ -7,7 +7,7 @@ mysql/
 logs
 .DS_STORE
 vendor/
-.composer.lock
+composer.lock
 phpmyadmin/config/config\.secret\.inc\.php
 
 phpmyadmin/config/config\.user\.inc\.php

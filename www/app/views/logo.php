@@ -1,14 +1,15 @@
 <?php
 
-function getSlogan() {
-    $slogans = [
-        'больше приложений богу приложений',
-        'приложение для чайника coming soon',
-        'смотри аниме почти на любом девайсе'
-    ];
+    function getSlogan() {
+        $slogans = [
+            'больше приложений богу приложений',
+            'приложение для чайника coming soon',
+            'смотри аниме почти на любом девайсе'
+        ];
 
-    return $slogans[array_rand( $slogans )];
-}
+        return $slogans[array_rand($slogans)];
+    }
+
 ?>
 
 <div class='logo'>

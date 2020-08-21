@@ -3,8 +3,9 @@
     namespace app\models;
 
     class AppItem {
+        private string $id;
+        private AppTarget $target;
         private string $link;
-        private string $type;
         private string $image;
         private string $icon;
         private string $name;
@@ -12,16 +13,26 @@
 
         /**
          * AppItem constructor.
+         * @param string $id
+         * @param AppTarget $target
          * @param string $link
-         * @param string $type
          * @param string $image
          * @param string $icon
          * @param string $name
          * @param string $platforms
          */
-        public function __construct($link, $type, $image, $icon, $name, $platforms) {
+        public function __construct(
+            $id,
+            $target,
+            $link,
+            $image,
+            $icon,
+            $name,
+            $platforms
+        ) {
+            $this->id = $id;
+            $this->target = $target;
             $this->link = $link;
-            $this->type = $type;
             $this->image = $image;
             $this->icon = $icon;
             $this->name = $name;
@@ -38,8 +49,8 @@
         /**
          * @return string
          */
-        public function getType() {
-            return $this->type;
+        public function getId() {
+            return $this->id;
         }
 
         /**

@@ -78,10 +78,10 @@
             $order = $appsOrder[$this->os][$this->type];
             usort($targetAppKeys, function ($a, $b) use ($order) {
                 foreach ($order as $value) {
-                    if ($a == $value) {
+                    if ($a === $value) {
                         return 0;
                     }
-                    if ($b == $value) {
+                    if ($b === $value) {
                         return 1;
                     }
                 }

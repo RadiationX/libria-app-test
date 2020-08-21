@@ -85,7 +85,7 @@
         private function fetchBrowserInfo(): array {
             return Utils::lazyInit($this->browserInfo, function () {
                 $browser = get_browser(null, true);
-                if ($browser == false) {
+                if ($browser === false) {
                     return [];
                 }
                 return (array)$browser;

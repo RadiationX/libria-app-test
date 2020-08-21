@@ -2,13 +2,13 @@
 
     namespace app\models;
 
-    class AppRequirements {
+    class AppTarget {
 
         private array $os;
         private array $type;
 
         /**
-         * AppRequirements constructor.
+         * AppTarget constructor.
          * @param string[] $os
          * @param string[] $type
          */

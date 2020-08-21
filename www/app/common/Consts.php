@@ -2,7 +2,7 @@
 
     namespace app\common;
 
-    use app\models\AppRequirements;
+    use app\models\AppTarget;
 
     /*
      * из browscap
@@ -32,9 +32,9 @@
         const TYPE_DESKTOP = 'desktop';
         const TYPE_UNKNOWN = 'unknown';
 
-        private static ?array $APP_REQS = null;
+        private static ?array $appTargets = null;
 
-        private static array $APPS_ORDER = [
+        private static array $appsOrder = [
             Consts::OS_MACOS => [
                 Consts::TYPE_DESKTOP => [
                     Consts::APP_ANILIBRIX,
@@ -58,35 +58,35 @@
         ];
 
         /**
-         * @return AppRequirements[]
+         * @return AppTarget[]
          */
-        private static function createAppReqs() {
+        private static function createAppTargets() {
             return [
-                Consts::APP_ANDROID => new AppRequirements(
+                Consts::APP_ANDROID => new AppTarget(
                     [Consts::OS_ANDROID],
                     [Consts::TYPE_MOBILE]
                 ),
-                Consts::APP_ANDROID_TV => new AppRequirements(
+                Consts::APP_ANDROID_TV => new AppTarget(
                     [Consts::OS_ANDROID],
                     [Consts::TYPE_TV]
                 ),
-                Consts::APP_IOS => new AppRequirements(
+                Consts::APP_IOS => new AppTarget(
                     [Consts::OS_IOS],
                     [Consts::TYPE_MOBILE, Consts::TYPE_TABLET]
                 ),
-                Consts::APP_MACOS_CATALYST => new AppRequirements(
+                Consts::APP_MACOS_CATALYST => new AppTarget(
                     [Consts::OS_MACOS],
                     [Consts::TYPE_DESKTOP]
                 ),
-                Consts::APP_WINTEN => new AppRequirements(
+                Consts::APP_WINTEN => new AppTarget(
                     [Consts::OS_WINDOWS],
                     [Consts::TYPE_DESKTOP]
                 ),
-                Consts::APP_ANILIBRIX => new AppRequirements(
+                Consts::APP_ANILIBRIX => new AppTarget(
                     [Consts::OS_MACOS, Consts::OS_LINUX, Consts::OS_WINDOWS],
                     [Consts::TYPE_DESKTOP]
                 ),
-                Consts::APP_QT => new AppRequirements(
+                Consts::APP_QT => new AppTarget(
                     [Consts::OS_MACOS, Consts::OS_LINUX, Consts::OS_WINDOWS],
                     [Consts::TYPE_DESKTOP]
                 )
@@ -97,15 +97,15 @@
          * @return string[][][]
          */
         public static function appsOrder() {
-            return self::$APPS_ORDER;
+            return self::$appsOrder;
         }
 
         /**
-         * @return AppRequirements[]
+         * @return AppTarget[]
          */
-        public static function appReqs() {
-            return Utils::lazyInit(self::$APP_REQS, function () {
-                return self::createAppReqs();
+        public static function appTargets() {
+            return Utils::lazyInit(self::$appTargets, function () {
+                return self::createAppTargets();
             });
         }
     }

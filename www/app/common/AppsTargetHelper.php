@@ -42,7 +42,7 @@
          */
         private function fetchClientAppKeys() {
             $filtered = array_filter(
-                Consts::appReqs(),
+                Consts::appTargets(),
                 function ($req) {
                     $hasPlatform = in_array($this->os, $req->getOsList());
                     $hasType = in_array($this->type, $req->getTypeList());
@@ -61,7 +61,7 @@
          */
         private function fetchOtherAppKeys() {
             $clientAppKeys = $this->getClientAppKeys();
-            $allAppKeys = array_keys(Consts::appReqs());
+            $allAppKeys = array_keys(Consts::appTargets());
             return array_values(array_diff($allAppKeys, $clientAppKeys));
         }
 
@@ -72,7 +72,7 @@
         private function sortByOrder($targetAppKeys) {
             $appsOrder = Consts::appsOrder();
             if (!array_key_exists($this->os, $appsOrder)
-                || !array_key_exists($this->os, $appsOrder[$this->os])) {
+                || !array_key_exists($this->type, $appsOrder[$this->os])) {
                 return $targetAppKeys;
             }
             $order = $appsOrder[$this->os][$this->type];

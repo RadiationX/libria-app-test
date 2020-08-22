@@ -2,8 +2,10 @@
     require dirname(__DIR__) . '/vendor/autoload.php';
     require dirname(__DIR__) . '/app/common/Consts.php';
 
+    use app\common\Consts;
     use app\common\DI;
     use app\common\Utils;
+
 ?>
 
 
@@ -41,6 +43,10 @@
 
     $router->get('/app/{appId}/', function ($appId) {
         echo "App $appId";
+        echo DI::appDetailView()->render(
+            null,
+            DI::appListSource()->getList()[Consts::APP_ANILIBRIX]
+        );
     });
 
     $router->run();

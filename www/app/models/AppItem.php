@@ -41,42 +41,42 @@
         }
 
         /** @noinspection PhpUnused
-         *  used in app-item.mustache
+         *  used in app-item-partial.mustache
          */
         public function getLink(): string {
             return $this->link;
         }
 
         /** @noinspection PhpUnused
-         *  used in app-item.mustache
+         *  used in app-item-partial.mustache
          */
         public function getId(): string {
             return $this->id;
         }
 
         /** @noinspection PhpUnused
-         *  used in app-item.mustache
+         *  used in app-item-partial.mustache
          */
         public function getImage(): string {
             return $this->image;
         }
 
         /** @noinspection PhpUnused
-         *  used in app-item.mustache
+         *  used in app-item-partial.mustache
          */
         public function getIcon(): string {
             return $this->icon;
         }
 
         /** @noinspection PhpUnused
-         *  used in app-item.mustache
+         *  used in app-item-partial.mustache
          */
         public function getName(): string {
             return $this->name;
         }
 
         /** @noinspection PhpUnused
-         *  used in app-item.mustache
+         *  used in app-item-partial.mustache
          */
         public function getPlatforms(): string {
             return $this->platforms;

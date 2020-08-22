@@ -33,7 +33,16 @@
             $appList = $this->source->getList();
             $clientAppKeys = $this->targetHelper->getClientAppKeys();
             $otherAppKeys = $this->targetHelper->getOtherAppKeys();
-            return $this->view->render($appList, $clientAppKeys, $otherAppKeys);
+
+            $clientApps = array_map(function ($key) use ($appList) {
+                return $appList[$key];
+            }, $clientAppKeys);
+
+            $otherApps = array_map(function ($key) use ($appList) {
+                return $appList[$key];
+            }, $otherAppKeys);
+
+            return $this->view->render($clientApps, $otherApps);
         }
     }
 

@@ -5,7 +5,7 @@
 
     use app\controllers\AppListController;
     use app\sources\AppListSource;
-    use app\views\AppItemView;
+    use app\views\AppDetailView;
     use app\views\AppListView;
     use Bramus\Router\Router;
     use Mustache_Engine;
@@ -20,7 +20,7 @@
         private static ?AppsTargetHelper $appsTargetHelper = null;
 
         private static ?AppListController $appListController = null;
-        private static ?AppItemView $appItemView = null;
+        private static ?AppDetailView $appDetailView = null;
         private static ?AppListView $appListView = null;
         private static ?AppListSource $appListSource = null;
 
@@ -30,15 +30,15 @@
             });
         }
 
-        public static function appItemView(): AppItemView {
-            return Utils::lazyInit(self::$appItemView, function () {
-                return new AppItemView(self::mustache());
+        public static function appDetailView(): AppDetailView {
+            return Utils::lazyInit(self::$appDetailView, function () {
+                return new AppDetailView(self::mustache());
             });
         }
 
         public static function appListView(): AppListView {
             return Utils::lazyInit(self::$appListView, function () {
-                return new AppListView(self::mustache(), self::appItemView());
+                return new AppListView(self::mustache());
             });
         }
 

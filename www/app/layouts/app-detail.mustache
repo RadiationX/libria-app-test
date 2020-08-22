@@ -10,11 +10,9 @@
     {{/ desc }}
 
     <div class="center_wrapper">
-        {{# sources }}
-            {{# modTplWrapper }}
-                {{ . }}
-            {{/ modTplWrapper }}
-        {{/ sources }}
+        {{# modifications }}
+            {{> app-mod-partial }}
+        {{/ modifications }}
     </div>
 
     {{# hasHidden }}

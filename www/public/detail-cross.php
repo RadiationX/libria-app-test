@@ -35,28 +35,29 @@
         <img src="res/images/app_cross_anilibrix.png" class="app_image" alt="anilibrix">
     </div>
     <div class="app_name">AniLibrix</div>
-    <div class="app_desc">Просто чоткая аппка</div>
+    <!--<div class="app_desc">Просто чоткая аппка</div>-->
     <div class="center_wrapper">
         <div class="app_mod">
             <a href="#" class="btn_download filled">
                 <img src="res/icons/ic_apple_white.svg" alt="" class="app_icon">
                 <span>Скачать для macOS</span>
             </a>
-
-
         </div>
-        <div class="app_mod">
+        <div class="app_mod" style="display: none;">
             <a href="#" class="btn_download filled">
                 <img src="res/icons/ic_windows_white.svg" alt="" class="app_icon">
                 <span>Скачать для Windows</span>
             </a>
         </div>
-        <div class="app_mod">
+        <div class="app_mod" style="display: none;">
             <a href="#" class="btn_download filled">
                 <img src="res/icons/ic_linux_white.svg" alt="" class="app_icon">
                 <span>Скачать для Linux x64</span>
             </a>
         </div>
+    </div>
+    <div class="center_wrapper">
+        <a href="#" class="btn_download small sub">Показать все</a>
     </div>
     <div class="center_wrapper">
         <a href="#" class="btn_download small sub">

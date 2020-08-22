@@ -10,18 +10,22 @@
 
     class AppListView {
 
+        private AppItemView $itemView;
         private Mustache_Engine $mustache;
         private Mustache_Template $tplList;
-        private Mustache_Template $tplItem;
 
         /**
          * AppListView constructor.
          * @param Mustache_Engine $mustache
+         * @param AppItemView $itemView
          */
-        public function __construct($mustache) {
+        public function __construct(
+            Mustache_Engine $mustache,
+            AppItemView $itemView
+        ) {
             $this->mustache = $mustache;
+            $this->itemView = $itemView;
             $this->tplList = $mustache->loadTemplate('app-list');
-            $this->tplItem = $mustache->loadTemplate('app-item');
         }
 
         /**
@@ -30,16 +34,19 @@
          * @param string[] $otherAppKeys
          * @return string
          */
-        public function render($appList, $clientAppKeys, $otherAppKeys) {
-            $tplItem = $this->tplItem;
+        public function render(
+            array $appList,
+            array $clientAppKeys,
+            array $otherAppKeys
+        ): string {
             return $this->tplList->render([
                 'clientApps' => $clientAppKeys,
                 'otherApps' => $otherAppKeys,
                 'hasOther' => !empty($otherAppKeys),
-                'itemTplWrapper' => function ($text, Mustache_LambdaHelper $helper) use ($appList, $tplItem) {
+                'itemTplWrapper' => function ($text, Mustache_LambdaHelper $helper) use ($appList) {
                     $appKey = trim($helper->render($text));
                     $app = $appList[$appKey];
-                    return $tplItem->render($app);
+                    return $this->itemView->render($app);
                 }
             ]);
         }

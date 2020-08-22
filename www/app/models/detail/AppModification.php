@@ -8,7 +8,7 @@
 
         private string $os;
         private string $version;
-        private bool $isStable;
+        private string $channel;
         /**
          * @var AppSource[]
          */
@@ -21,7 +21,7 @@
          * AppModification constructor.
          * @param string $os
          * @param string $version
-         * @param bool $isStable
+         * @param string $channel
          * @param AppSource[] $sources
          * @param string|null $abi
          * @param string|null $minOsVersion
@@ -30,7 +30,7 @@
         public function __construct(
             string $os,
             string $version,
-            bool $isStable,
+            string $channel,
             array $sources,
             ?string $abi,
             ?string $minOsVersion,
@@ -38,7 +38,7 @@
         ) {
             $this->os = $os;
             $this->version = $version;
-            $this->isStable = $isStable;
+            $this->channel = $channel;
             $this->sources = $sources;
             $this->abi = $abi;
             $this->minOsVersion = $minOsVersion;

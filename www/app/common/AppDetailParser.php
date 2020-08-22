@@ -47,13 +47,14 @@
          */
         private static function parseModification(array $json): AppModification {
             $os = self::requireOs($json["os"]);
+            $channel = self::requireChannel($json["channel"]);
             $sources = array_map(function ($itemJson) {
                 return self::parseSource($itemJson);
             }, $json["sources"] ?: []);
             return new AppModification(
                 $os,
                 $json["version"],
-                $json["is_stable"],
+                $channel,
                 $sources,
                 $json["abi"],
                 $json["min_os_v"],
@@ -114,6 +115,19 @@
                 throw self::valueError("os", $os);
             }
             return $os;
+        }
+
+        /**
+         * @param ?string $channel
+         * @return string
+         * @throws Exception
+         */
+        private static function requireChannel(string $channel): string {
+            $valid = false;
+            if (!$valid) {
+                throw self::valueError("channel", $channel);
+            }
+            return $channel;
         }
 
         /**

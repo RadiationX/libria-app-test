@@ -18,7 +18,7 @@
       "abi": "x64",
       "min_os_v": null,
       "description": null,
-      "is_stable": true,
+      "channel": "stable",
       "sources": [
         {
           "title": "github",
@@ -36,11 +36,11 @@
     },
     {
       "os": "linux",
-      "version": "1.2.9 Beta",
+      "version": "1.2.9",
       "abi": "x64",
       "min_os_v": null,
       "description": null,
-      "is_stable": false,
+      "channel": "beta",
       "sources": [
         {
           "title": "github",

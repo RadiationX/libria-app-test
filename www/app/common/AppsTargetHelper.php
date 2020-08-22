@@ -1,4 +1,5 @@
 <?php
+    declare(strict_types=1);
 
     namespace app\common;
 
@@ -21,7 +22,7 @@
         /**
          * @return string[]
          */
-        public function getClientAppKeys() {
+        public function getClientAppKeys(): array {
             return Utils::lazyInit($this->clientAppKeys, function () {
                 return $this->fetchClientAppKeys();
             });
@@ -31,7 +32,7 @@
         /**
          * @return string[]
          */
-        public function getOtherAppKeys() {
+        public function getOtherAppKeys(): array {
             return Utils::lazyInit($this->otherAppKeys, function () {
                 return $this->fetchOtherAppKeys();
             });
@@ -40,7 +41,7 @@
         /**
          * @return string[]
          */
-        private function fetchClientAppKeys() {
+        private function fetchClientAppKeys(): array {
             $filtered = array_filter(
                 Consts::appTargets(),
                 function ($req) {
@@ -59,7 +60,7 @@
         /**
          * @return string[]
          */
-        private function fetchOtherAppKeys() {
+        private function fetchOtherAppKeys(): array {
             $clientAppKeys = $this->getClientAppKeys();
             $allAppKeys = array_keys(Consts::appTargets());
             return array_values(array_diff($allAppKeys, $clientAppKeys));
@@ -69,7 +70,7 @@
          * @param string[] $targetAppKeys
          * @return string[]
          */
-        private function sortByOrder($targetAppKeys) {
+        private function sortByOrder($targetAppKeys): array {
             $appsOrder = Consts::appsOrder();
             if (!array_key_exists($this->os, $appsOrder)
                 || !array_key_exists($this->type, $appsOrder[$this->os])) {

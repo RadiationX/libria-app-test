@@ -60,7 +60,7 @@
         /**
          * @return AppTarget[]
          */
-        private static function createAppTargets() {
+        private static function createAppTargets(): array {
             return [
                 Consts::APP_ANDROID => new AppTarget(
                     [Consts::OS_ANDROID],
@@ -96,14 +96,14 @@
         /**
          * @return string[][][]
          */
-        public static function appsOrder() {
+        public static function appsOrder(): array {
             return self::$appsOrder;
         }
 
         /**
          * @return AppTarget[]
          */
-        public static function appTargets() {
+        public static function appTargets(): array {
             return Utils::lazyInit(self::$appTargets, function () {
                 return self::createAppTargets();
             });

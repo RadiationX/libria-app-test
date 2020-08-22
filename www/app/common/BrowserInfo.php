@@ -1,4 +1,5 @@
 <?php
+    declare(strict_types=1);
 
     namespace app\common;
 
@@ -8,27 +9,18 @@
         private ?string $os = null;
         private ?string $type = null;
 
-        /**
-         * @return string
-         */
         public function getOs(): string {
             return Utils::lazyInit($this->os, function () {
                 return $this->fetchOsInfo();
             });
         }
 
-        /**
-         * @return string
-         */
         public function getType(): string {
             return Utils::lazyInit($this->type, function () {
                 return $this->fetchTypeInfo();
             });
         }
 
-        /**
-         * @return string
-         */
         private function fetchOsInfo(): string {
             $os = $this->fetchBrowserInfo()['platform'];
 
@@ -54,9 +46,6 @@
             return Consts::OS_UNKNOWN;
         }
 
-        /**
-         * @return string
-         */
         private function fetchTypeInfo(): string {
             $type = $this->fetchBrowserInfo()['device_type'];
 
@@ -79,9 +68,6 @@
             return Consts::TYPE_UNKNOWN;
         }
 
-        /**
-         * @return array
-         */
         private function fetchBrowserInfo(): array {
             return Utils::lazyInit($this->browserInfo, function () {
                 $browser = get_browser(null, true);

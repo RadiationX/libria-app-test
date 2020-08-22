@@ -1,4 +1,5 @@
 <?php
+    declare(strict_types=1);
 
     namespace app\models;
 
@@ -39,45 +40,45 @@
             $this->platforms = $platforms;
         }
 
-        /**
-         * @return string
+        /** @noinspection PhpUnused
+         *  used in app-item.mustache
          */
-        public function getLink() {
+        public function getLink(): string {
             return $this->link;
         }
 
-        /**
-         * @return string
+        /** @noinspection PhpUnused
+         *  used in app-item.mustache
          */
-        public function getId() {
+        public function getId(): string {
             return $this->id;
         }
 
-        /**
-         * @return string
+        /** @noinspection PhpUnused
+         *  used in app-item.mustache
          */
-        public function getImage() {
+        public function getImage(): string {
             return $this->image;
         }
 
-        /**
-         * @return string
+        /** @noinspection PhpUnused
+         *  used in app-item.mustache
          */
-        public function getIcon() {
+        public function getIcon(): string {
             return $this->icon;
         }
 
-        /**
-         * @return string
+        /** @noinspection PhpUnused
+         *  used in app-item.mustache
          */
-        public function getName() {
+        public function getName(): string {
             return $this->name;
         }
 
-        /**
-         * @return string
+        /** @noinspection PhpUnused
+         *  used in app-item.mustache
          */
-        public function getPlatforms() {
+        public function getPlatforms(): string {
             return $this->platforms;
         }
     }

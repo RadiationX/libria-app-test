@@ -1,5 +1,5 @@
 <?php
-
+    declare(strict_types=1);
 
     namespace app\common;
 
@@ -11,10 +11,10 @@
 
     class AppDetailParser {
 
-        private static $FORMAT_V_1_0 = "1.0";
+        private static string $FORMAT_V_1_0 = "1.0";
 
-        private static $SOURCE_TYPE_FILE = "file";
-        private static $SOURCE_TYPE_SITE = "site";
+        private static string $SOURCE_TYPE_FILE = "file";
+        private static string $SOURCE_TYPE_SITE = "site";
 
         /**
          * @param array $json

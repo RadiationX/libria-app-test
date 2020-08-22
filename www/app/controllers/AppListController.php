@@ -1,4 +1,5 @@
 <?php
+    declare(strict_types=1);
 
     namespace app\controllers;
 
@@ -28,10 +29,7 @@
             $this->targetHelper = $targetHelper;
         }
 
-        /**
-         * @return string
-         */
-        function showList() {
+        function showList(): string {
             $appList = $this->source->getList();
             $clientAppKeys = $this->targetHelper->getClientAppKeys();
             $otherAppKeys = $this->targetHelper->getOtherAppKeys();

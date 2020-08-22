@@ -1,0 +1,83 @@
+{
+  "id": "cross_anilibrix",
+  "format_version": "1.0",
+  "name": "anilibrix",
+  "slogan": "electron or idk",
+  "os": [
+    "macos",
+    "linux",
+    "windows"
+  ],
+  "type": [
+    "desktop"
+  ],
+  "modifications": [
+    {
+      "os": "linux",
+      "version": "1.2.9",
+      "abi": "x64",
+      "min_os_v": null,
+      "description": null,
+      "is_stable": true,
+      "sources": [
+        {
+          "title": "github",
+          "type": "file",
+          "service": "github",
+          "link": "http://...x64"
+        },
+        {
+          "title": "some distribution service",
+          "type": "site",
+          "service": null,
+          "link": "http://...x64"
+        }
+      ]
+    },
+    {
+      "os": "linux",
+      "version": "1.2.9 Beta",
+      "abi": "x64",
+      "min_os_v": null,
+      "description": null,
+      "is_stable": false,
+      "sources": [
+        {
+          "title": "github",
+          "type": "file",
+          "service": "github",
+          "link": "http://...x64"
+        }
+      ]
+    },
+    {
+      "os": "macos",
+      "abi": null,
+      "min_os_v": null,
+      "description": null,
+      "version": "1.0",
+      "sources": [
+        {
+          "title": "github",
+          "type": "file",
+          "service": "github",
+          "link": "http://...macos"
+        }
+      ]
+    },
+    {
+      "os": "windows",
+      "abi": null,
+      "min_os_v": null,
+      "description": null,
+      "sources": [
+        {
+          "title": "github",
+          "type": "file",
+          "service": "github",
+          "link": "http://...macos"
+        }
+      ]
+    }
+  ]
+}

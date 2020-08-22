@@ -9,7 +9,6 @@
 
     class AppItemView {
 
-        private Mustache_Engine $mustache;
         private Mustache_Template $tpl;
 
         /**
@@ -17,7 +16,6 @@
          * @param Mustache_Engine $mustache
          */
         public function __construct(Mustache_Engine $mustache) {
-            $this->mustache = $mustache;
             $this->tpl = $mustache->loadTemplate('app-item');
         }
 

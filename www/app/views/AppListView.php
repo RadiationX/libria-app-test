@@ -11,7 +11,6 @@
     class AppListView {
 
         private AppItemView $itemView;
-        private Mustache_Engine $mustache;
         private Mustache_Template $tplList;
 
         /**
@@ -23,7 +22,6 @@
             Mustache_Engine $mustache,
             AppItemView $itemView
         ) {
-            $this->mustache = $mustache;
             $this->itemView = $itemView;
             $this->tplList = $mustache->loadTemplate('app-list');
         }

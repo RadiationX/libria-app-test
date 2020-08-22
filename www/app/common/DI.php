@@ -16,8 +16,6 @@
 
         private static ?Router $router = null;
         private static ?Mustache_Engine $mustache = null;
-        private static ?BrowserInfo $browserInfo = null;
-        private static ?AppsTargetHelper $appsTargetHelper = null;
 
         private static ?AppListController $appListController = null;
         private static ?AppDetailView $appDetailView = null;
@@ -46,21 +44,8 @@
             return Utils::lazyInit(self::$appListController, function () {
                 return new AppListController(
                     self::appListView(),
-                    self::appListSource(),
-                    self::appsTargetHelper()
+                    self::appListSource()
                 );
-            });
-        }
-
-        public static function appsTargetHelper(): AppsTargetHelper {
-            return Utils::lazyInit(self::$appsTargetHelper, function () {
-                return new AppsTargetHelper(self::browserInfo());
-            });
-        }
-
-        public static function browserInfo(): BrowserInfo {
-            return Utils::lazyInit(self::$browserInfo, function () {
-                return new BrowserInfo();
             });
         }
 

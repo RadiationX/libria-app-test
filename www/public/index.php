@@ -19,7 +19,7 @@
     <?php Utils::includeCss("/styles/style.css"); ?>
 </head>
 
-<body>
+<body class="debug_">
 <?
 
 

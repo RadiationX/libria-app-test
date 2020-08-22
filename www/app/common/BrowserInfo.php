@@ -5,24 +5,24 @@
 
     class BrowserInfo {
 
-        private ?array $browserInfo = null;
-        private ?string $os = null;
-        private ?string $type = null;
+        private static ?array $browserInfo = null;
+        private static ?string $os = null;
+        private static ?string $type = null;
 
-        public function getOs(): string {
-            return Utils::lazyInit($this->os, function () {
-                return $this->fetchOsInfo();
+        public static function getOs(): string {
+            return Utils::lazyInit(self::$os, function () {
+                return self::fetchOsInfo();
             });
         }
 
-        public function getType(): string {
-            return Utils::lazyInit($this->type, function () {
-                return $this->fetchTypeInfo();
+        public static function getType(): string {
+            return Utils::lazyInit(self::$type, function () {
+                return self::fetchTypeInfo();
             });
         }
 
-        private function fetchOsInfo(): string {
-            $os = $this->fetchBrowserInfo()['platform'];
+        private static function fetchOsInfo(): string {
+            $os = self::fetchBrowserInfo()['platform'];
 
             if (empty($os)) {
                 return Consts::OS_UNKNOWN;
@@ -46,8 +46,8 @@
             return Consts::OS_UNKNOWN;
         }
 
-        private function fetchTypeInfo(): string {
-            $type = $this->fetchBrowserInfo()['device_type'];
+        private static function fetchTypeInfo(): string {
+            $type = self::fetchBrowserInfo()['device_type'];
 
             if (empty($type)) {
                 return Consts::TYPE_UNKNOWN;
@@ -68,8 +68,8 @@
             return Consts::TYPE_UNKNOWN;
         }
 
-        private function fetchBrowserInfo(): array {
-            return Utils::lazyInit($this->browserInfo, function () {
+        private static function fetchBrowserInfo(): array {
+            return Utils::lazyInit(self::$browserInfo, function () {
                 $browser = get_browser(null, true);
                 if ($browser === false) {
                     return [];

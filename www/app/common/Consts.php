@@ -32,6 +32,50 @@
         const TYPE_DESKTOP = 'desktop';
         const TYPE_UNKNOWN = 'unknown';
 
+        const APP_KEYS = [
+            Consts::APP_ANDROID,
+            Consts::APP_ANDROID_TV,
+            Consts::APP_IOS,
+            Consts::APP_MACOS_CATALYST,
+            Consts::APP_WINTEN,
+            Consts::APP_ANILIBRIX,
+            Consts::APP_QT
+        ];
+
+        const OS_KEYS = [
+            Consts::OS_ANDROID,
+            Consts::OS_IOS,
+            Consts::OS_MACOS,
+            Consts::OS_LINUX,
+            Consts::OS_WINDOWS
+        ];
+
+        const TYPE_KEYS = [
+            Consts::TYPE_MOBILE,
+            Consts::TYPE_TV,
+            Consts::TYPE_TABLET,
+            Consts::TYPE_DESKTOP
+        ];
+
+        private static array $osTitles = [
+            Consts::OS_ANDROID => "Android",
+            Consts::OS_IOS => "iOS",
+            Consts::OS_MACOS => "macOS",
+            Consts::OS_LINUX => "Linux",
+            Consts::OS_WINDOWS => "Windows"
+        ];
+
+        /**
+         * @var string[]
+         */
+        private static array $osTitlesShort = [
+            Consts::OS_ANDROID => "Android",
+            Consts::OS_IOS => "iOS",
+            Consts::OS_MACOS => "Mac",
+            Consts::OS_LINUX => "Linux",
+            Consts::OS_WINDOWS => "Win"
+        ];
+
         private static ?array $appTargets = null;
 
         private static array $appsOrder = [
@@ -107,6 +151,20 @@
             return Utils::lazyInit(self::$appTargets, function () {
                 return self::createAppTargets();
             });
+        }
+
+        /**
+         * @return array|string[]
+         */
+        public static function osTitles() {
+            return self::$osTitles;
+        }
+
+        /**
+         * @return string[]
+         */
+        public static function osTitlesShort(): array {
+            return self::$osTitlesShort;
         }
     }
 

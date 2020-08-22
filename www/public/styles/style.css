@@ -104,7 +104,7 @@ body.debug:before {
   color: #d83541;
   position: relative;
   padding: 16px 16px 12px;
-  max-width: 320px;
+  max-width: 360px;
   margin: 16px;
   display: flex;
   flex-direction: column;
@@ -115,7 +115,7 @@ body.debug:before {
 }
 .app_link > div .app_image {
   max-width: 100%;
-  max-height: 220px;
+  max-height: 200px;
 }
 .app_link .app_icon {
   height: 24px;
@@ -129,13 +129,13 @@ body.debug:before {
   display: flex;
   justify-content: center;
   word-wrap: break-word;
-  word-break: break-all;
   overflow-wrap: break-word;
   align-items: center;
 }
 .app_link .app_name {
   max-width: 100%;
   display: inline-block;
+  text-align: center;
 }
 .app_link.android_tv {
   max-width: 360px;
@@ -219,6 +219,7 @@ body.debug:before {
   padding-left: 20px;
   padding-right: 24px;
   border: 1px solid #d83541;
+  position: relative;
 }
 .main.detail a.btn_download:hover {
   background: rgba(216, 53, 65, 0.03);

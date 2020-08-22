@@ -30,5 +30,20 @@
             $file = Utils::fileTime($relativePath);
             echo '<link rel="stylesheet" type="text/css" href="' . $file . '">';
         }
+
+        public static function sortByOrder(array &$array, array $order): array {
+            usort($array, function ($a, $b) use ($order) {
+                foreach ($order as $value) {
+                    if ($a === $value) {
+                        return 0;
+                    }
+                    if ($b === $value) {
+                        return 1;
+                    }
+                }
+                return 0;
+            });
+            return $array;
+        }
     }
 

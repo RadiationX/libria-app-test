@@ -4,6 +4,8 @@
     namespace app\models;
 
 
+    use app\common\AppTitleHelper;
+    use app\common\BrowserInfo;
     use app\common\Utils;
     use app\models\view\AppItemViewModel;
 
@@ -16,7 +18,7 @@
                 Utils::fileTime("/res/images/{$item->getImage()}"),
                 Utils::fileTime("/res/icons/{$item->getIcon()}"),
                 $item->getName(),
-                $item->getPlatforms()
+                AppTitleHelper::formatOsList(BrowserInfo::getOs(), $item->getTarget()->getOsList())
             );
         }
     }

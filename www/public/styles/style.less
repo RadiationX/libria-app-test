@@ -47,7 +47,6 @@ body {
 }
 
 .main {
-
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -138,7 +137,7 @@ body {
     color: @link_color;
     position: relative;
     padding: 16px 16px 12px;
-    max-width: 320px;
+    max-width: 360px;
     margin: 16px;
     display: flex;
     flex-direction: column;
@@ -149,7 +148,7 @@ body {
 
         .app_image {
             max-width: 100%;
-            max-height: 220px;
+            max-height: 200px;
         }
     }
 
@@ -175,7 +174,7 @@ body {
         justify-content: center;
 
         word-wrap: break-word;
-        word-break: break-all;
+        //word-break: break-all;
         overflow-wrap: break-word;
         align-items: center;
     }
@@ -183,6 +182,7 @@ body {
     .app_name {
         max-width: 100%;
         display: inline-block;
+        text-align: center;
     }
 
     &.android_tv {
@@ -288,6 +288,7 @@ body {
         padding-left: 16px+4px;
         padding-right: 16px + 8px;
         border: 1px solid @link_color;
+        position: relative;
 
         &:hover {
             background: fade(@link_color, 3%);

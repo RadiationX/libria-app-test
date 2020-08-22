@@ -54,6 +54,13 @@
             return $this->id;
         }
 
+        /**
+         * @return AppTarget
+         */
+        public function getTarget(): AppTarget {
+            return $this->target;
+        }
+
         /** @noinspection PhpUnused
          *  used in app-item-partial.mustache
          */

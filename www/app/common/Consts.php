@@ -57,25 +57,6 @@
             Consts::TYPE_DESKTOP
         ];
 
-        private static array $osTitles = [
-            Consts::OS_ANDROID => "Android",
-            Consts::OS_IOS => "iOS",
-            Consts::OS_MACOS => "macOS",
-            Consts::OS_LINUX => "Linux",
-            Consts::OS_WINDOWS => "Windows"
-        ];
-
-        /**
-         * @var string[]
-         */
-        private static array $osTitlesShort = [
-            Consts::OS_ANDROID => "Android",
-            Consts::OS_IOS => "iOS",
-            Consts::OS_MACOS => "Mac",
-            Consts::OS_LINUX => "Linux",
-            Consts::OS_WINDOWS => "Win"
-        ];
-
         private static ?array $appTargets = null;
 
         private static array $appsOrder = [
@@ -151,20 +132,6 @@
             return Utils::lazyInit(self::$appTargets, function () {
                 return self::createAppTargets();
             });
-        }
-
-        /**
-         * @return array|string[]
-         */
-        public static function osTitles() {
-            return self::$osTitles;
-        }
-
-        /**
-         * @return string[]
-         */
-        public static function osTitlesShort(): array {
-            return self::$osTitlesShort;
         }
     }
 

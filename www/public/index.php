@@ -2,6 +2,7 @@
     require dirname(__DIR__) . '/vendor/autoload.php';
     require dirname(__DIR__) . '/app/common/Consts.php';
 
+    use app\common\AppUrlHelper;
     use app\common\Consts;
     use app\common\DI;
     use app\common\Utils;
@@ -41,11 +42,11 @@
         echo '<h1>bramus/router</h1><p>Visit <code>/hello/<em>name</em></code> to get your Hello World mojo on!</p>';
     });
 
-    $router->get('/app/{appId}/', function ($appId) {
-        echo "App $appId";
+    $router->get('/app/{appId}/', function ($appId) use ($router) {
+        $appKey = AppUrlHelper::getAppKey($appId);
         echo DI::appDetailView()->render(
             null,
-            DI::appListSource()->getList()[Consts::APP_ANILIBRIX]
+            DI::appListSource()->getList()[$appKey]
         );
     });
 

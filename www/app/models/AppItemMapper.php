@@ -18,7 +18,7 @@
                 Utils::fileTime("/res/images/{$item->getImage()}"),
                 Utils::fileTime("/res/icons/{$item->getIcon()}"),
                 $item->getName(),
-                AppTitleHelper::formatOsList(BrowserInfo::getOs(), $item->getTarget()->getOsList())
+                AppTitleHelper::createTitle($item->getTarget())
             );
         }
     }

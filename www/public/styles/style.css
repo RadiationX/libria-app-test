@@ -18,11 +18,17 @@ body {
   padding: 0;
   margin: 0;
 }
-.text_block {
-  margin: auto;
-  max-width: 480px;
-  font-size: 14px;
-  line-height: 1.5;
+body.debug * {
+  outline: 1px solid rgba(32, 119, 159, 0.5);
+}
+body.debug:before {
+  content: "";
+  position: fixed;
+  width: 1px;
+  height: 100%;
+  top: 0;
+  background: #000000;
+  left: 50%;
 }
 .main {
   display: flex;
@@ -31,10 +37,6 @@ body {
   padding: 0 48px 48px 48px;
   margin: 0 auto;
   max-width: 1200px;
-}
-.main.detail {
-  flex-wrap: nowrap;
-  flex-direction: column;
 }
 .header {
   display: flex;
@@ -164,6 +166,8 @@ body {
   transform: scaleX(1) scaleY(1);
 }
 .main.detail {
+  flex-wrap: nowrap;
+  flex-direction: column;
   padding-top: 96px;
 }
 .main.detail .image_wrapper {
@@ -172,7 +176,7 @@ body {
 }
 .main.detail .image_wrapper .app_image {
   max-width: 100%;
-  max-height: 320px;
+  max-height: 300px;
 }
 .main.detail .app_name {
   margin-top: 24px;
@@ -185,19 +189,35 @@ body {
   margin-top: 8px;
   font-size: 14px;
 }
+.main.detail .text_block {
+  margin: auto;
+  max-width: 480px;
+  font-size: 14px;
+  line-height: 1.5;
+}
 .main.detail .center_wrapper {
-  text-align: center;
+  max-width: 640px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: center;
+  margin: 24px auto 0;
+}
+.main.detail .app_mod {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+  margin-left: 8px;
+  margin-right: 8px;
 }
 .main.detail a.btn_download {
-  margin-top: 24px;
   text-decoration: none;
   text-align: center;
   color: #d83541;
   border-radius: 24px;
   line-height: 48px;
-  display: inline-block;
-  padding-left: 16px;
-  padding-right: 16px;
+  padding-left: 20px;
+  padding-right: 24px;
   border: 1px solid #d83541;
 }
 .main.detail a.btn_download:hover {
@@ -212,7 +232,6 @@ body {
   background: #cd323e;
 }
 .main.detail a.btn_download.small {
-  margin-top: 12px;
   line-height: 40px;
 }
 .main.detail a.btn_download.sub {
@@ -226,7 +245,7 @@ body {
   height: 24px;
   vertical-align: text-bottom;
   margin-bottom: -2px;
-  margin-right: 8px;
+  margin-right: 4px;
 }
 .main.detail a.btn_download .app_icon.ic_apple {
   margin-bottom: 4px;

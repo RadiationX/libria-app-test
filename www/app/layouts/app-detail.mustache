@@ -1,18 +1,18 @@
 <main class="main detail clearfix">
 
     <div class="image_wrapper">
-        <img src="{{image}}" class="app_image" alt="app_image">
+        <img src="{{ getImage }}" class="app_image" alt="app_image">
     </div>
 
-    <div class="app_name">{{name}}</div>
-    {{# desc }}
-        <div class="app_desc">{{desc}}</div>
-    {{/ desc }}
+    <div class="app_name">{{ getName }}</div>
+    {{# getSmallDesc }}
+        <div class="app_desc">{{ . }}</div>
+    {{/ getSmallDesc }}
 
     <div class="center_wrapper">
-        {{# modifications }}
+        {{# getModifications }}
             {{> app-mod-partial }}
-        {{/ modifications }}
+        {{/ getModifications }}
     </div>
 
     {{# hasHidden }}

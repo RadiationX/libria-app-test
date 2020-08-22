@@ -27,7 +27,7 @@
         }
 
         public static function includeCss(string $relativePath) {
-            $file = Utils::fileTime("/styles/style.css");
+            $file = Utils::fileTime($relativePath);
             echo '<link rel="stylesheet" type="text/css" href="' . $file . '">';
         }
     }

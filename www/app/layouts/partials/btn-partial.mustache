@@ -1,6 +1,6 @@
-<a href="{{ link }}" class="btn_download {{ classes }}">
-    {{# icon }}
-        <img src="{{ icon }}" alt="app_icon" class="app_icon">
-    {{/ icon }}
-    <span>{{ text }}</span>
+<a href="{{ getLink }}" class="btn_download {{ getClasses }}">
+    {{# getIcon }}
+        <img src="{{ . }}" alt="app_icon" class="app_icon">
+    {{/ getIcon }}
+    <span>{{ getText }}</span>
 </a>

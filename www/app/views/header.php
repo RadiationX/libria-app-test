@@ -1,6 +1,6 @@
 <header class="header">
     <ul class="navbar">
-        <li class="bottom_line active"><a href="#">Приложения</a></li>
+        <li class="bottom_line active"><a href="/">Приложения</a></li>
         <li class="bottom_line"><a href="#">GitHub</a></li>
         <li class="bottom_line"><a href="#">API</a></li>
     </ul>

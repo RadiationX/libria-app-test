@@ -4,6 +4,7 @@
     namespace app\controllers;
 
     use app\common\AppsTargetHelper;
+    use app\models\AppItemMapper;
     use app\sources\AppListSource;
     use app\views\AppListView;
 
@@ -35,11 +36,11 @@
             $otherAppKeys = $this->targetHelper->getOtherAppKeys();
 
             $clientApps = array_map(function ($key) use ($appList) {
-                return $appList[$key];
+                return AppItemMapper::toViewModel($appList[$key]);
             }, $clientAppKeys);
 
             $otherApps = array_map(function ($key) use ($appList) {
-                return $appList[$key];
+                return AppItemMapper::toViewModel($appList[$key]);
             }, $otherAppKeys);
 
             return $this->view->render($clientApps, $otherApps);

@@ -4,6 +4,7 @@
     namespace app\views;
 
     use app\models\AppItem;
+    use app\models\view\AppItemViewModel;
     use Mustache_Engine;
     use Mustache_LambdaHelper;
     use Mustache_Template;
@@ -21,8 +22,8 @@
         }
 
         /**
-         * @param AppItem[] $clientApps
-         * @param AppItem[] $otherApps
+         * @param AppItemViewModel[] $clientApps
+         * @param AppItemViewModel[] $otherApps
          * @return string
          */
         public function render(

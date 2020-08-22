@@ -67,11 +67,10 @@ body {
 
         > li {
             position: relative;
-            margin: 0;
             padding: 0;
             display: block;
             float: left;
-            margin-right: 8px;
+            margin: 0 8px 0 0;
 
             a {
                 display: block;
@@ -128,17 +127,12 @@ body {
 }
 
 .app_link {
-    display: inline-block;
     text-decoration: none;
     color: @link_color;
     position: relative;
-    padding-bottom: 12px;
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-top: 16px;
+    padding: 16px 16px 12px;
     max-width: 320px;
     margin: 16px;
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -203,10 +197,10 @@ body {
         height: 3px;
         background: @link_color;
         position: absolute;
-        border-radius: 3px 3px 0px 0px;
+        border-radius: 3px 3px 0 0;
         content: "";
-        left: 0px;
-        right: 0px;
+        left: 0;
+        right: 0;
         opacity: 0;
         bottom: 0;
         -webkit-transition: opacity .2s ease-in-out, transform .2s ease-in-out;

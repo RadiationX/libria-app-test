@@ -16,5 +16,19 @@
             }
             return $variable;
         }
+
+        public static function fileTime(string $relativePath): string {
+            $file = $_SERVER['DOCUMENT_ROOT'] . $relativePath;
+            if (!file_exists($file)) {
+                return $relativePath;
+            }
+            $fileTime = filemtime($file);
+            return "{$relativePath}?{$fileTime}";
+        }
+
+        public static function includeCss(string $relativePath) {
+            $file = Utils::fileTime("/styles/style.css");
+            echo '<link rel="stylesheet" type="text/css" href="' . $file . '">';
+        }
     }
 

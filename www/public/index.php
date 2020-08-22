@@ -3,6 +3,7 @@
     require dirname(__DIR__) . '/app/common/Consts.php';
 
     use app\common\DI;
+    use app\common\Utils;
 ?>
 
 
@@ -12,8 +13,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="/styles/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?php Utils::includeCss("/styles/style.css"); ?>
 </head>
 
 <body>

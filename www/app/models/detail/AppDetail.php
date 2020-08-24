@@ -43,5 +43,45 @@
             $this->modifications = $modifications;
         }
 
+        /**
+         * @return string
+         */
+        public function getId(): string {
+            return $this->id;
+        }
 
+        /**
+         * @return string
+         */
+        public function getFormatVersion(): string {
+            return $this->formatVersion;
+        }
+
+        /**
+         * @return string
+         */
+        public function getName(): string {
+            return $this->name;
+        }
+
+        /**
+         * @return string
+         */
+        public function getSlogan(): string {
+            return $this->slogan;
+        }
+
+        /**
+         * @return AppTarget
+         */
+        public function getTarget(): AppTarget {
+            return $this->target;
+        }
+
+        /**
+         * @return AppModification[]
+         */
+        public function getModifications(): array {
+            return $this->modifications;
+        }
     }

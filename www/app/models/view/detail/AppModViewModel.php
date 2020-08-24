@@ -9,24 +9,19 @@
     class AppModViewModel {
 
         private BtnViewModel $primaryBtn;
+        /**
+         * @var BtnViewModel[]
+         */
+        private array $otherBtns;
 
         /**
          * AppModViewModel constructor.
-         * @param string $link
-         * @param string $icon
-         * @param string $text
+         * @param BtnViewModel $primaryBtn
+         * @param BtnViewModel[] $otherBtns
          */
-        public function __construct(
-            string $link,
-            string $icon,
-            string $text
-        ) {
-            $this->primaryBtn = new BtnViewModel(
-                $link,
-                $text,
-                $icon,
-                [BtnViewModel::CLASS_FILLED]
-            );
+        public function __construct(BtnViewModel $primaryBtn, array $otherBtns) {
+            $this->primaryBtn = $primaryBtn;
+            $this->otherBtns = $otherBtns;
         }
 
         /**
@@ -34,5 +29,12 @@
          */
         public function getPrimaryBtn(): BtnViewModel {
             return $this->primaryBtn;
+        }
+
+        /**
+         * @return BtnViewModel[]
+         */
+        public function getOtherBtns(): array {
+            return $this->otherBtns;
         }
     }

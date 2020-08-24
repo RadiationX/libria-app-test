@@ -32,6 +32,9 @@
         const TYPE_DESKTOP = 'desktop';
         const TYPE_UNKNOWN = 'unknown';
 
+        const CHANNEL_STABLE = "stable";
+        const CHANNEL_BETA = "beta";
+
         const APP_KEYS = [
             Consts::APP_ANDROID,
             Consts::APP_ANDROID_TV,
@@ -55,6 +58,11 @@
             Consts::TYPE_TV,
             Consts::TYPE_TABLET,
             Consts::TYPE_DESKTOP
+        ];
+
+        const CHANNEL_KEYS = [
+            self::CHANNEL_STABLE,
+            self::CHANNEL_BETA
         ];
 
         private static ?array $appTargets = null;

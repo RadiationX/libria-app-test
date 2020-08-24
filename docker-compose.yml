@@ -19,6 +19,9 @@ services:
     container_name: libria_php
     image: php:7.4-fpm
     restart: unless-stopped
+    depends_on:
+      - composer
+      - memcached
     volumes:
       - ./services/php/:/usr/local/etc/php/conf.d/
       - ./www:/var/www

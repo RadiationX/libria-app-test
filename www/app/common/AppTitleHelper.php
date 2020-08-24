@@ -67,6 +67,7 @@
             $result = array_filter($result, function ($value){
                 return !empty($value);
             });
+            $result = array_values($result);
             return join("/", $result);
         }
     }

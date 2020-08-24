@@ -39,40 +39,35 @@
         /**
          * @return string
          */
-        public
-        function getId(): string {
+        public function getId(): string {
             return $this->id;
         }
 
         /**
          * @return string
          */
-        public
-        function getLink(): string {
+        public function getLink(): string {
             return $this->link;
         }
 
         /**
          * @return string
          */
-        public
-        function getImage(): string {
+        public function getImage(): string {
             return $this->image;
         }
 
         /**
          * @return string
          */
-        public
-        function getIcon(): string {
+        public function getIcon(): string {
             return $this->icon;
         }
 
         /**
          * @return string
          */
-        public
-        function getName(): string {
+        public function getName(): string {
             return $this->name;
         }
 

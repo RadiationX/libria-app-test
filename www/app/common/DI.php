@@ -3,7 +3,9 @@
 
     namespace app\common;
 
+    use app\controllers\AppDetailController;
     use app\controllers\AppListController;
+    use app\sources\AppDetailSource;
     use app\sources\AppItemSource;
     use app\views\AppDetailView;
     use app\views\AppListView;
@@ -18,13 +20,23 @@
         private static ?Mustache_Engine $mustache = null;
 
         private static ?AppListController $appListController = null;
+        private static ?AppDetailController $appDetailController = null;
+
         private static ?AppDetailView $appDetailView = null;
         private static ?AppListView $appListView = null;
+
         private static ?AppItemSource $appListSource = null;
+        private static ?AppDetailSource $appDetailSource = null;
 
         public static function appItemSource(): AppItemSource {
             return Utils::lazyInit(self::$appListSource, function () {
                 return new AppItemSource();
+            });
+        }
+
+        public static function appDetailSource(): AppDetailSource {
+            return Utils::lazyInit(self::$appDetailSource, function () {
+                return new AppDetailSource();
             });
         }
 
@@ -44,6 +56,17 @@
             return Utils::lazyInit(self::$appListController, function () {
                 return new AppListController(
                     self::appListView(),
+                    self::appItemSource(),
+                    self::appDetailSource()
+                );
+            });
+        }
+
+        public static function appDetailController(): AppDetailController {
+            return Utils::lazyInit(self::$appDetailController, function () {
+                return new AppDetailController(
+                    self::appDetailView(),
+                    self::appDetailSource(),
                     self::appItemSource()
                 );
             });

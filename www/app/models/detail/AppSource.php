@@ -30,4 +30,31 @@
             $this->service = $service;
         }
 
+        /**
+         * @return string
+         */
+        public function getTitle(): string {
+            return $this->title;
+        }
+
+        /**
+         * @return string
+         */
+        public function getType(): string {
+            return $this->type;
+        }
+
+        /**
+         * @return string
+         */
+        public function getLink(): string {
+            return $this->link;
+        }
+
+        /**
+         * @return string|null
+         */
+        public function getService(): ?string {
+            return $this->service;
+        }
     }

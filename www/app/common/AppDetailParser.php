@@ -83,8 +83,7 @@
          * @throws Exception
          */
         private static function requireAppId(string $id): string {
-            $allAppKeys = array_keys(Consts::appTargets());
-            $valid = in_array($id, $allAppKeys, true);
+            $valid = in_array($id, Consts::APP_KEYS, true);
             if (!$valid) {
                 throw self::valueError("app id", $id);
             }
@@ -110,7 +109,7 @@
          * @throws Exception
          */
         private static function requireOs(string $os): string {
-            $valid = false;
+            $valid = in_array($os, Consts::OS_KEYS, true);
             if (!$valid) {
                 throw self::valueError("os", $os);
             }
@@ -123,7 +122,7 @@
          * @throws Exception
          */
         private static function requireChannel(string $channel): string {
-            $valid = false;
+            $valid = in_array($channel, Consts::CHANNEL_KEYS, true);
             if (!$valid) {
                 throw self::valueError("channel", $channel);
             }

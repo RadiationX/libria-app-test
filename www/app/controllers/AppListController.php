@@ -4,39 +4,50 @@
     namespace app\controllers;
 
     use app\common\AppsTargetHelper;
-    use app\models\AppItemMapper;
+    use app\models\AppMapper;
+    use app\sources\AppDetailSource;
     use app\sources\AppItemSource;
     use app\views\AppListView;
 
     class AppListController {
 
         private AppListView $view;
-        private AppItemSource $source;
+        private AppItemSource $itemSource;
+        private AppDetailSource $detailSource;
 
         /**
          * AppListController constructor.
          * @param AppListView $view
-         * @param AppItemSource $source
+         * @param AppItemSource $itemSource
+         * @param AppDetailSource $detailSource
          */
         public function __construct(
             AppListView $view,
-            AppItemSource $source
+            AppItemSource $itemSource,
+            AppDetailSource $detailSource
         ) {
             $this->view = $view;
-            $this->source = $source;
+            $this->itemSource = $itemSource;
+            $this->detailSource = $detailSource;
         }
 
         function showList(): string {
-            $appList = $this->source->getList();
+            $appList = $this->itemSource->getList();
             $clientAppKeys = AppsTargetHelper::getClientAppKeys();
             $otherAppKeys = AppsTargetHelper::getOtherAppKeys();
 
             $clientApps = array_map(function ($key) use ($appList) {
-                return AppItemMapper::toViewModel($appList[$key]);
+                return AppMapper::toItemViewModel(
+                    $appList[$key],
+                    $this->detailSource->getDetail($key)
+                );
             }, $clientAppKeys);
 
             $otherApps = array_map(function ($key) use ($appList) {
-                return AppItemMapper::toViewModel($appList[$key]);
+                return AppMapper::toItemViewModel(
+                    $appList[$key],
+                    $this->detailSource->getDetail($key)
+                );
             }, $otherAppKeys);
 
             return $this->view->render($clientApps, $otherApps);

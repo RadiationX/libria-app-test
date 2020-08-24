@@ -42,12 +42,10 @@
         echo '<h1>bramus/router</h1><p>Visit <code>/hello/<em>name</em></code> to get your Hello World mojo on!</p>';
     });
 
-    $router->get('/app/{appId}/', function ($appId) use ($router) {
-        $appKey = AppUrlHelper::getAppKey($appId);
-        echo DI::appDetailView()->render(
-            null,
-            DI::appItemSource()->getList()[$appKey]
-        );
+    $router->get('/app/{urlAppId}/', function ($urlAppId) use ($router) {
+        $appId = AppUrlHelper::getAppKey($urlAppId);
+        $controller = DI::appDetailController();
+        echo $controller->showDetail($appId);
     });
 
     $router->run();

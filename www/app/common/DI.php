@@ -4,7 +4,7 @@
     namespace app\common;
 
     use app\controllers\AppListController;
-    use app\sources\AppListSource;
+    use app\sources\AppItemSource;
     use app\views\AppDetailView;
     use app\views\AppListView;
     use Bramus\Router\Router;
@@ -20,11 +20,11 @@
         private static ?AppListController $appListController = null;
         private static ?AppDetailView $appDetailView = null;
         private static ?AppListView $appListView = null;
-        private static ?AppListSource $appListSource = null;
+        private static ?AppItemSource $appListSource = null;
 
-        public static function appListSource(): AppListSource {
+        public static function appItemSource(): AppItemSource {
             return Utils::lazyInit(self::$appListSource, function () {
-                return new AppListSource();
+                return new AppItemSource();
             });
         }
 
@@ -44,7 +44,7 @@
             return Utils::lazyInit(self::$appListController, function () {
                 return new AppListController(
                     self::appListView(),
-                    self::appListSource()
+                    self::appItemSource()
                 );
             });
         }

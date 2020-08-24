@@ -46,7 +46,7 @@
         $appKey = AppUrlHelper::getAppKey($appId);
         echo DI::appDetailView()->render(
             null,
-            DI::appListSource()->getList()[$appKey]
+            DI::appItemSource()->getList()[$appKey]
         );
     });
 

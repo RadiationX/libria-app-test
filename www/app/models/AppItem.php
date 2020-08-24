@@ -6,45 +6,26 @@
     class AppItem {
         private string $id;
         private AppTarget $target;
-        private string $link;
         private string $image;
         private string $icon;
-        private string $name;
-        private string $platforms;
 
         /**
          * AppItem constructor.
          * @param string $id
          * @param AppTarget $target
-         * @param string $link
          * @param string $image
          * @param string $icon
-         * @param string $name
-         * @param string $platforms
          */
         public function __construct(
             $id,
             $target,
-            $link,
             $image,
-            $icon,
-            $name,
-            $platforms
+            $icon
         ) {
             $this->id = $id;
             $this->target = $target;
-            $this->link = $link;
             $this->image = $image;
             $this->icon = $icon;
-            $this->name = $name;
-            $this->platforms = $platforms;
-        }
-
-        /** @noinspection PhpUnused
-         *  used in app-item-partial.mustache
-         */
-        public function getLink(): string {
-            return $this->link;
         }
 
         /** @noinspection PhpUnused
@@ -73,19 +54,5 @@
          */
         public function getIcon(): string {
             return $this->icon;
-        }
-
-        /** @noinspection PhpUnused
-         *  used in app-item-partial.mustache
-         */
-        public function getName(): string {
-            return $this->name;
-        }
-
-        /** @noinspection PhpUnused
-         *  used in app-item-partial.mustache
-         */
-        public function getPlatforms(): string {
-            return $this->platforms;
         }
     }

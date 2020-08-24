@@ -26,7 +26,7 @@
         public function render(?AppDetail $appDetail, AppItem $appItem): string {
             $app = new AppDetailViewModel(
                 $appItem->getId(),
-                $appItem->getName(),
+                "unknown",
                 "Powerful slogan description",
                 "/res/images/{$appItem->getImage()}",
                 [

@@ -5,22 +5,22 @@
 
     use app\common\AppsTargetHelper;
     use app\models\AppItemMapper;
-    use app\sources\AppListSource;
+    use app\sources\AppItemSource;
     use app\views\AppListView;
 
     class AppListController {
 
         private AppListView $view;
-        private AppListSource $source;
+        private AppItemSource $source;
 
         /**
          * AppListController constructor.
          * @param AppListView $view
-         * @param AppListSource $source
+         * @param AppItemSource $source
          */
         public function __construct(
             AppListView $view,
-            AppListSource $source
+            AppItemSource $source
         ) {
             $this->view = $view;
             $this->source = $source;

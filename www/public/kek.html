@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/gh/centrifugal/centrifuge-js@2.6.4/dist/centrifuge.min.js"></script>
+</head>
+
+<body>
+
+    <script>
+        console.log("kek");
+        const centrifuge = new Centrifuge('wss://api.service-company.biz/websocket/connection/websocket');
+        centrifuge.setToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzODFjYThiMy04MjY1LTQ1OTctYmQyMC1mMjMyZjJmYzI4NjUifQ.hVCH9AmyOBeQBOGF37H-52nfyEwbM8tGzqquSp9-L_w');
+
+        centrifuge.on('connect', function(ctx) {
+            console.log('connected', ctx);
+        });
+
+        centrifuge.on('disconnect', function(ctx) {
+            console.log('disconnected', ctx);
+        });
+        
+        console.log("kek "+centrifuge);
+
+        centrifuge.subscribe('user:9b47616a-f2c2-4274-b18e-215750ce4886', subHandler);
+
+        centrifuge.connect();
+
+        function subHandler(ctx) {
+            console.log(ctx.data);
+        }
+    </script>
+</body></html>

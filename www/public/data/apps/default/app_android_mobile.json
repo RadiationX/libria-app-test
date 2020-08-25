@@ -1,0 +1,15 @@
+{
+  "id": "android_mobile",
+  "modifications": [
+    {
+      "os": "android",
+      "channel": "stable",
+      "sources": [
+        {
+          "title": "github",
+          "link": "http://...x64"
+        }
+      ]
+    }
+  ]
+}

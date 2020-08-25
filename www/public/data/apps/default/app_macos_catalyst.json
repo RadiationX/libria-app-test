@@ -1,0 +1,15 @@
+{
+  "id": "macos_catalyst",
+  "modifications": [
+    {
+      "os": "macos",
+      "channel": "stable",
+      "sources": [
+        {
+          "title": "github",
+          "link": "http://...x64"
+        }
+      ]
+    }
+  ]
+}

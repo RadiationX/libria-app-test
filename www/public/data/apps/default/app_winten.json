@@ -1,0 +1,21 @@
+{
+  "id": "winten",
+  "modifications": [
+    {
+      "os": "windows",
+      "channel": "stable",
+      "params": {
+        "min_os_v": "10"
+      },
+      "mustShownParams": [
+        "min_os_v"
+      ],
+      "sources": [
+        {
+          "title": "github",
+          "link": "http://...macos"
+        }
+      ]
+    }
+  ]
+}

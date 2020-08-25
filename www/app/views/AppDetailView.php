@@ -30,7 +30,10 @@
         }
 
         public function render(AppUpdate $appDetail, AppItem $appItem): string {
+            $hasShown = false;
             $hasHidden = false;
+
+            // Делаем выборку только по стабильному каналу и сортируем по ОС клиента
             $stableMods = array_filter(
                 $appDetail->getModifications(),
                 function (AppModification $mod) {
@@ -39,9 +42,17 @@
             );
             $stableMods = array_values($stableMods);
             $stableMods = $this::sortByOrder($stableMods, [BrowserInfo::getOs()]);
-            $modViewModels = array_map(function ($mod) use ($appDetail, $appItem, &$hasHidden) {
-                $isHidden = $mod->getOs() !== BrowserInfo::getOs();
-                //$isHidden = false;
+
+            // Определяем, что есть модификации для ОС клиента
+            foreach ($stableMods as $mod) {
+                if ($mod->getOs() === BrowserInfo::getOs()) {
+                    $hasShown = true;
+                    break;
+                }
+            }
+
+            $modViewModels = array_map(function ($mod) use ($appDetail, $appItem, &$hasShown, &$hasHidden) {
+                $isHidden = $hasShown && $mod->getOs() !== BrowserInfo::getOs();
                 if ($isHidden) {
                     $hasHidden = true;
                 }

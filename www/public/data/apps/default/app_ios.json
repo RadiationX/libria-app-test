@@ -1,0 +1,15 @@
+{
+  "id": "ios",
+  "modifications": [
+    {
+      "os": "ios",
+      "channel": "stable",
+      "sources": [
+        {
+          "title": "github",
+          "link": "http://...x64"
+        }
+      ]
+    }
+  ]
+}

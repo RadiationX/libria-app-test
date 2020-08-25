@@ -41,10 +41,12 @@
                 return self::parseSource($itemJson);
             }, $json["sources"] ?: []);
             $params = $json["params"] ?: [];
+            $mustShownParams = $json["mustShownParams"] ?: [];
             return new AppModification(
                 $os,
                 $channel,
                 $params,
+                $mustShownParams,
                 $sources
             );
         }

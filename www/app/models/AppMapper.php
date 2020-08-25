@@ -38,22 +38,21 @@
         ): AppModViewModel {
             $titleParts = [AppTitleHelper::getTitle($mod->getOs())];
 
-            /*foreach ($detail->getModifications() as $value) {
-                if ($value !== $mod
-                    && $value->getOs() === $mod->getOs()
-                    && $value->getAbi() !== $mod->getAbi()) {
-                    $titleParts[] = $mod->getAbi();
-                    break;
+            foreach ($mod->getMustShownParams() as $paramKey) {
+                $titleParts[] = $mod->getParams()[$paramKey];
+            }
+
+            foreach (array_keys($mod->getParams()) as $paramKey) {
+                foreach ($detail->getModifications() as $value) {
+                    if ($value !== $mod
+                        && $value->getOs() === $mod->getOs()
+                        && $value->getParams()[$paramKey] !== $mod->getParams()[$paramKey]) {
+                        $titleParts[] = $mod->getParams()[$paramKey];
+                        break;
+                    }
                 }
             }
-            foreach ($detail->getModifications() as $value) {
-                if ($value !== $mod
-                    && $value->getOs() === $mod->getOs()
-                    && $value->getMinOsVersion() !== $mod->getMinOsVersion()) {
-                    $titleParts[] = $mod->getMinOsVersion();
-                    break;
-                }
-            }*/
+            $titleParts = array_unique($titleParts);
 
             $source = $mod->getSources()[0];
             $title = join(" ", $titleParts);

@@ -41,6 +41,7 @@
             $stableMods = $this::sortByOrder($stableMods, [BrowserInfo::getOs()]);
             $modViewModels = array_map(function ($mod) use ($appDetail, $appItem, &$hasHidden) {
                 $isHidden = $mod->getOs() !== BrowserInfo::getOs();
+                //$isHidden = false;
                 if ($isHidden) {
                     $hasHidden = true;
                 }

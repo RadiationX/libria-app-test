@@ -1,107 +1,38 @@
 {
   "id": "cross_anilibrix",
-  "format_version": "1.0",
-  "name": "AnilibriX",
-  "slogan": "Отличный аниме-кинотеатр на твоем компьютере",
-  "os": [
-    "macos",
-    "linux",
-    "windows"
-  ],
-  "type": [
-    "desktop"
-  ],
   "modifications": [
     {
       "os": "linux",
-      "version": "1.2.9",
       "channel": "stable",
-      "abi": "x64",
-      "min_os_v": null,
-      "description": null,
+      "params": {
+        "abi": "x64"
+      },
       "sources": [
         {
           "title": "github",
-          "type": "file",
-          "service": "github",
-          "link": "http://...x64"
-        },
-        {
-          "title": "some distribution service",
-          "type": "site",
-          "service": null,
           "link": "http://...x64"
         }
       ]
     },
     {
       "os": "linux",
-      "version": "1.2.9",
       "channel": "stable",
-      "abi": "x32",
-      "min_os_v": null,
-      "description": null,
+      "params": {
+        "abi": "x32"
+      },
       "sources": [
         {
           "title": "github",
-          "type": "file",
-          "service": "github",
-          "link": "http://...x64"
-        },
-        {
-          "title": "some distribution service",
-          "type": "site",
-          "service": null,
-          "link": "http://...x64"
-        }
-      ]
-    },
-    {
-      "os": "linux",
-      "version": "1.2.9",
-      "channel": "beta",
-      "abi": "x64",
-      "min_os_v": null,
-      "description": null,
-      "sources": [
-        {
-          "title": "github",
-          "type": "file",
-          "service": "github",
           "link": "http://...x64"
         }
       ]
     },
     {
       "os": "macos",
-      "version": "1.0",
       "channel": "stable",
-      "abi": null,
-      "min_os_v": null,
-      "description": null,
       "sources": [
         {
           "title": "github",
-          "type": "file",
-          "service": "github",
-          "link": "http://...macos"
-        },
-        {
-          "title": "Скачать из GoogleDrive",
-          "type": "file",
-          "service": "github",
-          "link": "http://...macos"
-        },
-        {
-          "title": "Скачать через Torrent",
-          "type": "file",
-          "service": "github",
-          "link": "http://...macos"
-        },
-        {
-          "title": "Версия из AppStore",
-          "type": "file",
-          "service": "github",
           "link": "http://...macos"
         }
       ]
@@ -110,20 +41,12 @@
       "os": "windows",
       "version": "1.0",
       "channel": "stable",
-      "abi": null,
-      "min_os_v": "10",
-      "description": null,
+      "params": {
+        "min_os_v": "10"
+      },
       "sources": [
         {
           "title": "github",
-          "type": "file",
-          "service": "github",
-          "link": "http://...macos"
-        },
-        {
-          "title": "Версия из Windows Store",
-          "type": "file",
-          "service": "github",
           "link": "http://...macos"
         }
       ]

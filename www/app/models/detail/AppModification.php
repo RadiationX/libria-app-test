@@ -13,6 +13,10 @@
          */
         private array $params;
         /**
+         * @var string[]
+         */
+        private array $mustShownParams;
+        /**
          * @var AppSource[]
          */
         private array $sources;
@@ -22,17 +26,20 @@
          * @param string $os
          * @param string $channel
          * @param array[] $params
+         * @param string[] $mustShownParams
          * @param AppSource[] $sources
          */
         public function __construct(
             string $os,
             string $channel,
             array $params,
+            array $mustShownParams,
             array $sources
         ) {
             $this->os = $os;
             $this->channel = $channel;
             $this->params = $params;
+            $this->mustShownParams = $mustShownParams;
             $this->sources = $sources;
         }
 
@@ -55,6 +62,13 @@
          */
         public function getParams(): array {
             return $this->params;
+        }
+
+        /**
+         * @return string[]
+         */
+        public function getMustShownParams(): array {
+            return $this->mustShownParams;
         }
 
         /**

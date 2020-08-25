@@ -8,7 +8,7 @@
 
         private string $id;
         private string $name;
-        private string $smallDesc;
+        private ?string $desc;
         private string $image;
         /**
          * @var AppModViewModel[]
@@ -20,7 +20,7 @@
          * AppDetailViewModel constructor.
          * @param string $id
          * @param string $name
-         * @param string $smallDesc
+         * @param ?string $desc
          * @param string $image
          * @param AppModViewModel[] $modifications
          * @param bool $hasHidden
@@ -28,14 +28,14 @@
         public function __construct(
             string $id,
             string $name,
-            string $smallDesc,
+            ?string $desc,
             string $image,
             array $modifications,
             bool $hasHidden
         ) {
             $this->id = $id;
             $this->name = $name;
-            $this->smallDesc = $smallDesc;
+            $this->desc = $desc;
             $this->image = $image;
             $this->modifications = $modifications;
             $this->hasHidden = $hasHidden;
@@ -56,10 +56,10 @@
         }
 
         /**
-         * @return string
+         * @return ?string
          */
-        public function getSmallDesc(): string {
-            return $this->smallDesc;
+        public function getDesc(): ?string {
+            return $this->desc;
         }
 
         /**

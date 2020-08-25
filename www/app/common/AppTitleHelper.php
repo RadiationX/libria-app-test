@@ -54,7 +54,9 @@
             $clientType = BrowserInfo::getType();
             $appOs = $target->getOsList();
             $appType = $target->getTypeList();
-            $osTitles = self::formatList($clientOs, $appOs, self::$osTitlesShort);
+            $isSingleOs = count($target->getOsList()) == 1;
+            $osTitlesSource = $isSingleOs ? self::$osTitles : self::$osTitlesShort;
+            $osTitles = self::formatList($clientOs, $appOs, $osTitlesSource);
             $typeTitles = self::formatList($clientType, $appType, self::$typeTitles);
             return trim("{$osTitles} {$typeTitles}");
         }
@@ -64,7 +66,7 @@
             $result = array_map(function ($value) use ($titles) {
                 return $titles[$value];
             }, $values);
-            $result = array_filter($result, function ($value){
+            $result = array_filter($result, function ($value) {
                 return !empty($value);
             });
             $result = array_values($result);

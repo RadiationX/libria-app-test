@@ -9,7 +9,7 @@
     use app\common\Utils;
     use app\models\AppItem;
     use app\models\AppMapper;
-    use app\models\detail\AppDetail;
+    use app\models\detail\AppUpdate;
     use app\models\detail\AppModification;
     use app\models\view\detail\AppDetailViewModel;
     use app\models\view\detail\AppModViewModel;
@@ -29,7 +29,7 @@
             $this->tpl = $mustache->loadTemplate("app-detail");
         }
 
-        public function render(AppDetail $appDetail, AppItem $appItem): string {
+        public function render(AppUpdate $appDetail, AppItem $appItem): string {
             $hasHidden = false;
             $stableMods = array_filter(
                 $appDetail->getModifications(),
@@ -48,8 +48,8 @@
             }, $stableMods);
             $app = new AppDetailViewModel(
                 $appItem->getId(),
-                $appDetail->getName(),
-                $appDetail->getSlogan(),
+                $appItem->getName(),
+                $appItem->getDesc(),
                 "/res/images/{$appItem->getImage()}",
                 $modViewModels,
                 $hasHidden

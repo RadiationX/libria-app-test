@@ -124,7 +124,7 @@ body.debug:before {
   height: 24px;
   margin-right: 8px;
 }
-.app_link .app_icon.ic_apple {
+.app_link .app_icon[src*=ic_apple] {
   margin-bottom: 4px;
 }
 .app_link .app_name_row {

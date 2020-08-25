@@ -4,38 +4,27 @@
     namespace app\common;
 
 
-    use app\models\detail\AppDetail;
+    use app\models\detail\AppUpdate;
     use app\models\detail\AppModification;
     use app\models\detail\AppSource;
     use Exception;
 
     class AppDetailParser {
 
-        private static string $FORMAT_V_1_0 = "1.0";
-
-        private static string $SOURCE_TYPE_FILE = "file";
-        private static string $SOURCE_TYPE_SITE = "site";
-
         /**
          * @param array $json
-         * @return AppDetail
+         * @return AppUpdate
          * @throws Exception
          */
-        static function parse(array $json): AppDetail {
-            $format = self::requireFormat($json["format_version"]);
+        static function parse(array $json): AppUpdate {
             $id = self::requireAppId($json["id"]);
 
-            $target = Consts::appTargets()[$id];
             $modifications = array_map(function ($itemJson) {
                 return self::parseModification($itemJson);
             }, $json["modifications"] ?: []);
 
-            return new AppDetail(
+            return new AppUpdate(
                 $id,
-                $format,
-                $json["name"],
-                $json["slogan"],
-                $target,
                 $modifications
             );
         }
@@ -51,14 +40,12 @@
             $sources = array_map(function ($itemJson) {
                 return self::parseSource($itemJson);
             }, $json["sources"] ?: []);
+            $params = $json["params"] ?: [];
             return new AppModification(
                 $os,
-                $json["version"],
                 $channel,
-                $sources,
-                $json["abi"],
-                $json["min_os_v"],
-                $json["description"]
+                $params,
+                $sources
             );
         }
 
@@ -68,12 +55,9 @@
          * @throws Exception
          */
         private static function parseSource(array $json): AppSource {
-            $type = self::requireSourceType($json["type"]);
             return new AppSource(
                 $json["title"],
-                $type,
-                $json["link"],
-                $json["service"]
+                $json["link"]
             );
         }
 
@@ -88,19 +72,6 @@
                 throw self::valueError("app id", $id);
             }
             return $id;
-        }
-
-        /**
-         * @param ?string $format
-         * @return string
-         * @throws Exception
-         */
-        private static function requireFormat(?string $format): string {
-            $valid = $format === self::$FORMAT_V_1_0;
-            if (!$valid) {
-                throw self::valueError("format", $format);
-            }
-            return $format;
         }
 
         /**
@@ -127,19 +98,6 @@
                 throw self::valueError("channel", $channel);
             }
             return $channel;
-        }
-
-        /**
-         * @param ?string $type
-         * @return string
-         * @throws Exception
-         */
-        private static function requireSourceType(string $type): string {
-            $valid = $type === self::$SOURCE_TYPE_FILE || $type === self::$SOURCE_TYPE_SITE;
-            if (!$valid) {
-                throw self::valueError("source type", $type);
-            }
-            return $type;
         }
 
         /**

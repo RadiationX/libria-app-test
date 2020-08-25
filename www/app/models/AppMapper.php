@@ -9,7 +9,7 @@
     use app\common\BrowserInfo;
     use app\common\Resources;
     use app\common\Utils;
-    use app\models\detail\AppDetail;
+    use app\models\detail\AppUpdate;
     use app\models\detail\AppModification;
     use app\models\detail\AppSource;
     use app\models\view\AppItemViewModel;
@@ -18,30 +18,27 @@
 
     class AppMapper {
 
-        public static function toItemViewModel(AppItem $item, ?AppDetail $detail): AppItemViewModel {
-            $name = "Unknown";
-            if ($detail != null) {
-                $name = $detail->getName();
-            }
+        public static function toItemViewModel(AppItem $item, ?AppUpdate $detail): AppItemViewModel {
+            $icRes = Resources::APP_PRIMARY[$item->getId()];
             return new AppItemViewModel(
                 $item->getId(),
                 AppUrlHelper::getAppUrl($item->getId()),
                 Utils::fileTime("/res/images/{$item->getImage()}"),
-                Utils::fileTime("/res/icons/{$item->getIcon()}"),
-                $name,
+                Utils::fileTime("/res/icons/{$icRes}"),
+                $item->getName(),
                 AppTitleHelper::createTitle($item->getTarget())
             );
         }
 
         public static function toModViewModel(
             AppModification $mod,
-            AppDetail $detail,
+            AppUpdate $detail,
             AppItem $appItem,
             bool $isHidden
         ): AppModViewModel {
             $titleParts = [AppTitleHelper::getTitle($mod->getOs())];
 
-            foreach ($detail->getModifications() as $value) {
+            /*foreach ($detail->getModifications() as $value) {
                 if ($value !== $mod
                     && $value->getOs() === $mod->getOs()
                     && $value->getAbi() !== $mod->getAbi()) {
@@ -56,7 +53,7 @@
                     $titleParts[] = $mod->getMinOsVersion();
                     break;
                 }
-            }
+            }*/
 
             $source = $mod->getSources()[0];
             $title = join(" ", $titleParts);

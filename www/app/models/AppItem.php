@@ -7,29 +7,33 @@
         private string $id;
         private AppTarget $target;
         private string $image;
-        private string $icon;
+        private string $name;
+        private ?string $desc;
 
         /**
          * AppItem constructor.
          * @param string $id
          * @param AppTarget $target
          * @param string $image
-         * @param string $icon
+         * @param string $name
+         * @param ?string $desc
          */
         public function __construct(
-            $id,
-            $target,
-            $image,
-            $icon
+            string $id,
+            AppTarget $target,
+            string $image,
+            string $name,
+            ?string $desc = null
         ) {
             $this->id = $id;
             $this->target = $target;
             $this->image = $image;
-            $this->icon = $icon;
+            $this->name = $name;
+            $this->desc = $desc;
         }
 
-        /** @noinspection PhpUnused
-         *  used in app-item-partial.mustache
+        /**
+         * @return string
          */
         public function getId(): string {
             return $this->id;
@@ -42,17 +46,24 @@
             return $this->target;
         }
 
-        /** @noinspection PhpUnused
-         *  used in app-item-partial.mustache
+        /**
+         * @return string
          */
         public function getImage(): string {
             return $this->image;
         }
 
-        /** @noinspection PhpUnused
-         *  used in app-item-partial.mustache
+        /**
+         * @return string
          */
-        public function getIcon(): string {
-            return $this->icon;
+        public function getName(): string {
+            return $this->name;
+        }
+
+        /**
+         * @return ?string
+         */
+        public function getDesc(): ?string {
+            return $this->desc;
         }
     }

@@ -12,7 +12,7 @@
 
         private string $link;
         private string $text;
-        private string $icon;
+        private ?string $icon;
         /**
          * @var string[]
          */
@@ -22,13 +22,13 @@
          * BtnViewModel constructor.
          * @param string $link
          * @param string $text
-         * @param string $icon
+         * @param ?string $icon
          * @param string[] $classes
          */
         public function __construct(
             string $link,
             string $text,
-            string $icon,
+            ?string $icon,
             array $classes
         ) {
             $this->link = $link;
@@ -37,30 +37,14 @@
             $this->classes = $classes;
         }
 
-        /**
-         * @return string
-         */
-        public function getLink(): string {
-            return $this->link;
-        }
-
-        /**
-         * @return string
-         */
         public function getText(): string {
             return $this->text;
         }
 
-        /**
-         * @return string
-         */
-        public function getIcon(): string {
+        public function getIcon(): ?string {
             return $this->icon;
         }
 
-        /**
-         * @return string
-         */
         public function getClasses(): string {
             return join(" ", $this->classes);
         }

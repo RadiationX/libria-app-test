@@ -11,6 +11,7 @@
     use app\common\Utils;
     use app\models\detail\AppDetail;
     use app\models\detail\AppModification;
+    use app\models\detail\AppSource;
     use app\models\view\AppItemViewModel;
     use app\models\view\BtnViewModel;
     use app\models\view\detail\AppModViewModel;
@@ -66,11 +67,28 @@
                 "/res/icons/{$icRes}",
                 [BtnViewModel::CLASS_FILLED]
             );
+            $otherBtns = self::getOtherBtns($mod);
 
             $classes = [];
             if ($isHidden) {
                 $classes[] = AppModViewModel::CLASS_HIDDEN;
             }
-            return new AppModViewModel($primaryBtn, [], $classes);
+            return new AppModViewModel($primaryBtn, $otherBtns, $classes);
+        }
+
+        /**
+         * @param AppModification $mod
+         * @return BtnViewModel[]
+         */
+        private static function getOtherBtns(AppModification $mod): array {
+            $sources = array_slice($mod->getSources(), 1);
+            return array_map(function (AppSource $source) {
+                return new BtnViewModel(
+                    $source->getLink(),
+                    $source->getTitle(),
+                    null,
+                    [BtnViewModel::CLASS_SMALL, BtnViewModel::CLASS_SUB]
+                );
+            }, $sources);
         }
     }

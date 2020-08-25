@@ -1,16 +1,6 @@
 {
   "id": "cross_anilibrix",
   "format_version": "1.0",
-  "name": "AnilibriX",
-  "slogan": "Отличный аниме-кинотеатр на твоем компьютере",
-  "os": [
-    "macos",
-    "linux",
-    "windows"
-  ],
-  "type": [
-    "desktop"
-  ],
   "modifications": [
     {
       "os": "linux",
@@ -85,24 +75,6 @@
           "type": "file",
           "service": "github",
           "link": "http://...macos"
-        },
-        {
-          "title": "Скачать из GoogleDrive",
-          "type": "file",
-          "service": "github",
-          "link": "http://...macos"
-        },
-        {
-          "title": "Скачать через Torrent",
-          "type": "file",
-          "service": "github",
-          "link": "http://...macos"
-        },
-        {
-          "title": "Версия из AppStore",
-          "type": "file",
-          "service": "github",
-          "link": "http://...macos"
         }
       ]
     },
@@ -116,12 +88,6 @@
       "sources": [
         {
           "title": "github",
-          "type": "file",
-          "service": "github",
-          "link": "http://...macos"
-        },
-        {
-          "title": "Версия из Windows Store",
           "type": "file",
           "service": "github",
           "link": "http://...macos"

@@ -4,10 +4,26 @@
     {
       "os": "ios",
       "channel": "stable",
+      "params": {
+        "osv": "13"
+      },
       "sources": [
         {
           "title": "github",
-          "link": "http://...x64"
+          "link": "https://github.com/anilibria/anilibria-ios/releases/download/1.1.1/Anilibria_1.1.1_iOS_13.ipa"
+        }
+      ]
+    },
+    {
+      "os": "ios",
+      "channel": "stable",
+      "params": {
+        "osv": "11.2"
+      },
+      "sources": [
+        {
+          "title": "github",
+          "link": "https://github.com/anilibria/anilibria-ios/releases/download/1.1.1/Anilibria_1.1.1_iOS_11.2.ipa"
         }
       ]
     }

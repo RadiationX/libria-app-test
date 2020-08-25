@@ -10,20 +10,7 @@
       "sources": [
         {
           "title": "github",
-          "link": "http://...x64"
-        }
-      ]
-    },
-    {
-      "os": "linux",
-      "channel": "stable",
-      "params": {
-        "abi": "x32"
-      },
-      "sources": [
-        {
-          "title": "github",
-          "link": "http://...x64"
+          "link": "https://github.com/anilibria/anilibria-winmaclinux/releases/download/0.1.7/anilibria_linux_x64_0.1.7.AppImage"
         }
       ]
     },
@@ -33,21 +20,17 @@
       "sources": [
         {
           "title": "github",
-          "link": "http://...macos"
+          "link": "https://github.com/anilibria/anilibria-winmaclinux/releases/download/0.1.7/anilibria_macos_0.1.7.dmg"
         }
       ]
     },
     {
       "os": "windows",
-      "version": "1.0",
       "channel": "stable",
-      "params": {
-        "min_os_v": "10"
-      },
       "sources": [
         {
           "title": "github",
-          "link": "http://...macos"
+          "link": "https://github.com/anilibria/anilibria-winmaclinux/releases/download/0.1.7/anilibria_windows_0.1.7.zip"
         }
       ]
     }

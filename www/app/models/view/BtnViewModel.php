@@ -37,6 +37,13 @@
             $this->classes = $classes;
         }
 
+        /**
+         * @return string
+         */
+        public function getLink(): string {
+            return $this->link;
+        }
+
         public function getText(): string {
             return $this->text;
         }

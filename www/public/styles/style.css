@@ -14,6 +14,9 @@ html {
   font-size: 16px;
   color: #333;
 }
+.hidden {
+  display: none !important;
+}
 body {
   padding: 0;
   margin: 0;

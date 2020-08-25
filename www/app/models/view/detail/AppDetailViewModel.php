@@ -14,6 +14,7 @@
          * @var AppModViewModel[]
          */
         private array $modifications;
+        private bool $hasHidden;
 
         /**
          * AppDetailViewModel constructor.
@@ -22,19 +23,22 @@
          * @param string $smallDesc
          * @param string $image
          * @param AppModViewModel[] $modifications
+         * @param bool $hasHidden
          */
         public function __construct(
             string $id,
             string $name,
             string $smallDesc,
             string $image,
-            array $modifications
+            array $modifications,
+            bool $hasHidden
         ) {
             $this->id = $id;
             $this->name = $name;
             $this->smallDesc = $smallDesc;
             $this->image = $image;
             $this->modifications = $modifications;
+            $this->hasHidden = $hasHidden;
         }
 
         /**
@@ -70,5 +74,12 @@
          */
         public function getModifications(): array {
             return $this->modifications;
+        }
+
+        /**
+         * @return bool
+         */
+        public function hasHidden(): bool {
+            return $this->hasHidden;
         }
     }

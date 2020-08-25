@@ -1,5 +1,7 @@
 <?php
 
+    use app\common\Resources;
+
     function getSlogan() {
         $slogans = [
             'больше приложений богу приложений',
@@ -14,7 +16,7 @@
 
 <div class='logo'>
     <div class='logo_img_shape'>
-        <img src='res/icons/ic_anilibria_white.svg' alt='' class='logo_img'>
+        <img src='res/icons/<?php echo Resources::IC_ANILIBRIA_WHITE ?>' alt='' class='logo_img'>
     </div>
     <span class='logo_name'>AniLibria</span>
     <span class='logo_slogan'>

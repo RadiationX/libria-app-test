@@ -4,7 +4,9 @@
     namespace app\views;
 
 
+    use app\common\BrowserInfo;
     use app\common\Consts;
+    use app\common\Utils;
     use app\models\AppItem;
     use app\models\AppMapper;
     use app\models\detail\AppDetail;
@@ -28,6 +30,7 @@
         }
 
         public function render(AppDetail $appDetail, AppItem $appItem): string {
+            $hasHidden = false;
             $stableMods = array_filter(
                 $appDetail->getModifications(),
                 function (AppModification $mod) {
@@ -35,17 +38,43 @@
                 }
             );
             $stableMods = array_values($stableMods);
-            $modViewModels = array_map(function ($mod) use ($appDetail, $appItem) {
-                return AppMapper::toModViewModel($mod, $appDetail, $appItem);
+            $stableMods = $this::sortByOrder($stableMods, [BrowserInfo::getOs()]);
+            $modViewModels = array_map(function ($mod) use ($appDetail, $appItem, &$hasHidden) {
+                $isHidden = $mod->getOs() !== BrowserInfo::getOs();
+                if ($isHidden) {
+                    $hasHidden = true;
+                }
+                return AppMapper::toModViewModel($mod, $appDetail, $appItem, $isHidden);
             }, $stableMods);
             $app = new AppDetailViewModel(
                 $appItem->getId(),
                 $appDetail->getName(),
                 $appDetail->getSlogan(),
                 "/res/images/{$appItem->getImage()}",
-                $modViewModels
+                $modViewModels,
+                $hasHidden
             );
             return $this->tpl->render($app);
+        }
+
+        /**
+         * @param AppModification[] $array
+         * @param string[] $order
+         * @return AppModification[]
+         */
+        private function sortByOrder(array &$array, array $order): array {
+            usort($array, function ($a, $b) use ($order) {
+                foreach ($order as $value) {
+                    if ($a->getOs() === $value) {
+                        return 0;
+                    }
+                    if ($b->getOs() === $value) {
+                        return 1;
+                    }
+                }
+                return 0;
+            });
+            return $array;
         }
 
     }

@@ -9,11 +9,18 @@
 
     class AppDetailSource {
 
-        public function getDetail($appId): AppDetail {
-            $file = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/data/apps/default/app_$appId.json");
-            $json = json_decode($file, true);
-            $detail = AppDetailParser::parse($json);
-            return $detail;
+        public function getDetail($appId): ?AppDetail {
+            $filePath = $_SERVER["DOCUMENT_ROOT"] . "/data/apps/default/app_$appId.json";
+            if (!file_exists($filePath)) {
+                return null;
+            }
+            try {
+                $file = file_get_contents($filePath);
+                $json = json_decode($file, true);
+                return AppDetailParser::parse($json);
+            } catch (\Exception $e) {
+            }
+            return null;
         }
 
     }

@@ -9,15 +9,27 @@
         <div class="app_desc">{{ . }}</div>
     {{/ getSmallDesc }}
 
-    <div class="center_wrapper">
+    <div id="mods" class="center_wrapper">
         {{# getModifications }}
             {{> app-mod-partial }}
         {{/ getModifications }}
     </div>
 
     {{# hasHidden }}
-        <div class="center_wrapper">
-            <a href="#" class="btn_download small sub">Показать все</a>
+        <div id="show_all" class="center_wrapper">
+            <a href="#" class="btn_download small sub" onclick="return showMods(this);">Показать все</a>
         </div>
-    {{/hasHidden}}
+    {{/ hasHidden }}
+
+    <script>
+        function showMods(event) {
+            console.log("keke");
+            const hiddenMods = document.querySelectorAll("#mods > .hidden");
+            hiddenMods.forEach(function (value) {
+                value.classList.remove("hidden");
+            });
+            document.getElementById("show_all").classList.add("hidden")
+            return false;
+        }
+    </script>
 </main>

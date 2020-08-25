@@ -7,6 +7,7 @@
     use app\common\AppTitleHelper;
     use app\common\AppUrlHelper;
     use app\common\BrowserInfo;
+    use app\common\Resources;
     use app\common\Utils;
     use app\models\detail\AppDetail;
     use app\models\detail\AppModification;
@@ -16,13 +17,17 @@
 
     class AppMapper {
 
-        public static function toItemViewModel(AppItem $item, AppDetail $detail): AppItemViewModel {
+        public static function toItemViewModel(AppItem $item, ?AppDetail $detail): AppItemViewModel {
+            $name = "Unknown";
+            if ($detail != null) {
+                $name = $detail->getName();
+            }
             return new AppItemViewModel(
                 $item->getId(),
                 AppUrlHelper::getAppUrl($item->getId()),
                 Utils::fileTime("/res/images/{$item->getImage()}"),
                 Utils::fileTime("/res/icons/{$item->getIcon()}"),
-                $detail->getName(),
+                $name,
                 AppTitleHelper::createTitle($item->getTarget())
             );
         }
@@ -30,18 +35,42 @@
         public static function toModViewModel(
             AppModification $mod,
             AppDetail $detail,
-            AppItem $appItem
+            AppItem $appItem,
+            bool $isHidden
         ): AppModViewModel {
+            $titleParts = [AppTitleHelper::getTitle($mod->getOs())];
+
+            foreach ($detail->getModifications() as $value) {
+                if ($value !== $mod
+                    && $value->getOs() === $mod->getOs()
+                    && $value->getAbi() !== $mod->getAbi()) {
+                    $titleParts[] = $mod->getAbi();
+                    break;
+                }
+            }
+            foreach ($detail->getModifications() as $value) {
+                if ($value !== $mod
+                    && $value->getOs() === $mod->getOs()
+                    && $value->getMinOsVersion() !== $mod->getMinOsVersion()) {
+                    $titleParts[] = $mod->getMinOsVersion();
+                    break;
+                }
+            }
 
             $source = $mod->getSources()[0];
-            $title = AppTitleHelper::getTitle($mod->getOs());
+            $title = join(" ", $titleParts);
+            $icRes = Resources::OS_WHITE[$mod->getOs()];
             $primaryBtn = new BtnViewModel(
                 $source->getLink(),
                 "Скачать для $title",
-                "/res/icons/{$appItem->getIcon()}",
+                "/res/icons/{$icRes}",
                 [BtnViewModel::CLASS_FILLED]
             );
 
-            return new AppModViewModel($primaryBtn, []);
+            $classes = [];
+            if ($isHidden) {
+                $classes[] = AppModViewModel::CLASS_HIDDEN;
+            }
+            return new AppModViewModel($primaryBtn, [], $classes);
         }
     }

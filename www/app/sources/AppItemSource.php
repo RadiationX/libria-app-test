@@ -57,9 +57,9 @@
                 Consts::APP_MACOS_CATALYST => new AppItem(
                     Consts::APP_MACOS_CATALYST,
                     Consts::appTargets()[Consts::APP_MACOS_CATALYST],
-                    MultiImage::from("app_macos_catalyst.jpg")
-                        ->with(1, "app_macos_catalyst.jpg")
-                        ->with(2, "app_macos_catalyst.jpg"),
+                    MultiImage::from("app_macos_catalyst-w840.jpg")
+                        ->with(1, "app_macos_catalyst-w480.jpg")
+                        ->with(2, "app_macos_catalyst-w840.jpg"),
                     "AniLibria Catalyst",
                     "[Экспериментально] iOS приложение, портированное на macOS"
                 ),

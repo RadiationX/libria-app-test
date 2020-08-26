@@ -23,14 +23,13 @@
         }
 
         public function getDefault(): string {
-            return Utils::fileTime("/res/images/{$this->multiImage->getDefault()}");
+            return "/res/images/{$this->multiImage->getDefault()}";
         }
 
         public function getSrcSet(): string {
             $srcSet = [];
             foreach ($this->multiImage->getScaled() as $scale => $url) {
-                $fileUrl = Utils::fileTime("/res/images/{$url}");
-                $srcSet[] = "$fileUrl $scale";
+                $srcSet[] = "/res/images/$url $scale";
             }
             return join(", ", $srcSet);
         }

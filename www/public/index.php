@@ -15,7 +15,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>AniLibria - Приложения</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php Utils::includeCss("/styles/style.css"); ?>
 </head>

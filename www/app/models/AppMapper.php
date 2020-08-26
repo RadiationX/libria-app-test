@@ -25,7 +25,7 @@
                 $item->getId(),
                 AppUrlHelper::getAppUrl($item->getId()),
                 new ImageViewModel($item->getImage(), "app_image"),
-                Utils::fileTime("/res/icons/{$icRes}"),
+                "/res/icons/{$icRes}",
                 $item->getName(),
                 AppTitleHelper::createTitle($item->getTarget())
             );

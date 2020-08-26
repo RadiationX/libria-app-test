@@ -121,13 +121,6 @@ body.debug:before {
   max-width: 100%;
   max-height: 200px;
 }
-.app_link .app_icon {
-  height: 24px;
-  margin-right: 8px;
-}
-.app_link .app_icon[src*=ic_apple] {
-  margin-bottom: 4px;
-}
 .app_link .app_name_row {
   margin-top: 24px;
   display: flex;
@@ -136,7 +129,14 @@ body.debug:before {
   overflow-wrap: break-word;
   align-items: center;
 }
-.app_link .app_name {
+.app_link .app_name_row .app_icon {
+  height: 24px;
+  margin-right: 8px;
+}
+.app_link .app_name_row .app_icon[src*=ic_apple] {
+  margin-bottom: 4px;
+}
+.app_link .app_name_row .app_name {
   max-width: 100%;
   display: inline-block;
   text-align: center;
@@ -211,19 +211,53 @@ body.debug:before {
   display: flex;
   flex-direction: column;
 }
-.main.detail a.btn_download {
-  text-decoration: none;
-  text-align: center;
-  color: #d83541;
-  border-radius: 24px;
-  line-height: 48px;
-  padding-left: 20px;
-  padding-right: 20px;
-  border: 1px solid #d83541;
-  position: relative;
-  margin-left: 8px;
+.main.detail .a.btn_download {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  align-items: center;
+}
+.main.detail .a.btn_download .app_icon {
+  height: 24px;
   margin-right: 8px;
+}
+.main.detail .a.btn_download .app_icon[src*=ic_apple] {
+  margin-bottom: 4px;
+}
+.main.detail .a.btn_download .app_name {
+  max-width: 100%;
+  display: inline-block;
+  text-align: center;
+}
+.main.detail a.btn_download {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  align-items: center;
+  text-decoration: none;
+  line-height: 24px;
+  padding: 8px 20px 8px 20px;
+  border: 1px solid #d83541;
   margin: 8px;
+  border-radius: 24px;
+  color: #d83541;
+  min-height: 48px;
+}
+.main.detail a.btn_download > span {
+  max-width: 100%;
+  display: inline-block;
+  text-align: center;
+}
+.main.detail a.btn_download .app_icon {
+  height: 24px;
+  margin-right: 8px;
+}
+.main.detail a.btn_download .app_icon[src*=ic_apple] {
+  margin-bottom: 4px;
 }
 .main.detail a.btn_download:hover {
   background: rgba(216, 53, 65, 0.03);
@@ -237,7 +271,9 @@ body.debug:before {
   background: #cd323e;
 }
 .main.detail a.btn_download.small {
-  line-height: 40px;
+  min-height: 40px;
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 .main.detail a.btn_download.sub {
   border: none;
@@ -245,14 +281,5 @@ body.debug:before {
 .main.detail a.btn_download.sub:hover {
   background: none;
   text-decoration: underline;
-}
-.main.detail a.btn_download .app_icon {
-  height: 24px;
-  vertical-align: text-bottom;
-  margin-bottom: -2px;
-  margin-right: 4px;
-}
-.main.detail a.btn_download .app_icon.ic_apple {
-  margin-bottom: 4px;
 }
 /*# sourceMappingURL=style.css.map */

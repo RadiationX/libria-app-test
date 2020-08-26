@@ -157,22 +157,6 @@ body {
         }
     }
 
-
-    .app_icon {
-        height: 24px;
-        margin-right: 8px;
-
-        &.ic_android {
-        }
-
-        &[src*=ic_apple] {
-            margin-bottom: 4px
-        }
-
-        &.ic_laptop {
-        }
-    }
-
     .app_name_row {
         margin-top: 24px;
         display: flex;
@@ -182,12 +166,27 @@ body {
         //word-break: break-all;
         overflow-wrap: break-word;
         align-items: center;
-    }
 
-    .app_name {
-        max-width: 100%;
-        display: inline-block;
-        text-align: center;
+        .app_icon {
+            height: 24px;
+            margin-right: 8px;
+
+            &.ic_android {
+            }
+
+            &[src*=ic_apple] {
+                margin-bottom: 4px
+            }
+
+            &.ic_laptop {
+            }
+        }
+
+        .app_name {
+            max-width: 100%;
+            display: inline-block;
+            text-align: center;
+        }
     }
 
     &.android_tv {
@@ -282,24 +281,78 @@ body {
         //margin-top: 16px;
     }
 
+    .a.btn_download {
+        margin-top: 24px;
+        display: flex;
+        justify-content: center;
+
+        word-wrap: break-word;
+        //word-break: break-all;
+        overflow-wrap: break-word;
+        align-items: center;
+
+        .app_icon {
+            height: 24px;
+            margin-right: 8px;
+
+            &.ic_android {
+            }
+
+            &[src*=ic_apple] {
+                margin-bottom: 4px
+            }
+
+            &.ic_laptop {
+            }
+        }
+
+        .app_name {
+            max-width: 100%;
+            display: inline-block;
+            text-align: center;
+        }
+    }
+
+
     a.btn_download {
-        text-decoration: none;
-        text-align: center;
-        color: @link_color;
-        border-radius: 24px;
-        line-height: 48px;
-        padding-left: 16px+4px;
-        padding-right: 16px + 4px;
-        border: 1px solid @link_color;
         position: relative;
-        margin-left: 8px;
-        margin-right: 8px;
+        display: flex;
+        justify-content: center;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        align-items: center;
+        text-decoration: none;
+        line-height: 24px;
+        padding: 8px (16px + 4px) 8px (16px+4px);
+        border: 1px solid @link_color;
         margin: 8px;
+        border-radius: 24px;
+        color: @link_color;
+        min-height: 48px;
+
+        > span {
+            max-width: 100%;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .app_icon {
+            height: 24px;
+            margin-right: 8px;
+            &.ic_android {
+            }
+
+            &[src*=ic_apple] {
+                margin-bottom: 4px
+            }
+
+            &.ic_laptop {
+            }
+        }
 
         &:hover {
             background: fade(@link_color, 3%);
         }
-
 
         &.filled {
             background: @link_color;
@@ -312,7 +365,9 @@ body {
         }
 
         &.small {
-            line-height: 40px;
+            min-height: 40px;
+            padding-top: 4px;
+            padding-bottom: 4px;
         }
 
         &.sub {
@@ -321,24 +376,6 @@ body {
             &:hover {
                 background: none;
                 text-decoration: underline;
-            }
-        }
-
-
-        .app_icon {
-            height: 24px;
-            vertical-align: text-bottom;
-            margin-bottom: -2px;
-            margin-right: 4px;
-
-            &.ic_android {
-            }
-
-            &.ic_apple {
-                margin-bottom: 4px
-            }
-
-            &.ic_laptop {
             }
         }
     }

@@ -18,10 +18,16 @@
     </div>
 
     {{# hasHidden }}
-        <div id="show_all" class="center_wrapper">
+        <div id="show_all" class="center_wrapper" style="margin-top: 0;">
             <a href="#" class="btn_download small sub" onclick="return showMods(this);">Показать все</a>
         </div>
     {{/ hasHidden }}
+
+    <div class="center_wrapper" style="margin-top: 36px;">
+        {{# otherLinks }}
+            {{> btn-partial }}
+        {{/ otherLinks }}
+    </div>
 
     <script>
         function showMods(event) {

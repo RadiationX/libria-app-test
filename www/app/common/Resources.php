@@ -56,4 +56,12 @@
             Consts::APP_QT => self::IC_MACBOOK_WHITE
         ];
 
+        const LINK_PRIMARY = [
+            Consts::LINK_TYPE_GITHUB => self::IC_GITHUB_PRIMARY
+        ];
+
+        const LINK_WHITE = [
+            Consts::LINK_TYPE_GITHUB => self::IC_GITHUB_WHITE
+        ];
+
     }

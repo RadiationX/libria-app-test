@@ -15,6 +15,7 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: fade(@link_color, 3%);
 }
 
 
@@ -278,9 +279,7 @@ body {
         display: flex;
         flex-direction: column;
 
-        margin-top: 16px;
-        margin-left: 8px;
-        margin-right: 8px;
+        //margin-top: 16px;
     }
 
     a.btn_download {
@@ -290,9 +289,12 @@ body {
         border-radius: 24px;
         line-height: 48px;
         padding-left: 16px+4px;
-        padding-right: 16px + 8px;
+        padding-right: 16px + 4px;
         border: 1px solid @link_color;
         position: relative;
+        margin-left: 8px;
+        margin-right: 8px;
+        margin: 8px;
 
         &:hover {
             background: fade(@link_color, 3%);

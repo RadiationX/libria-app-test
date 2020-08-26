@@ -35,6 +35,8 @@
         const CHANNEL_STABLE = "stable";
         const CHANNEL_BETA = "beta";
 
+        const LINK_TYPE_GITHUB = "github";
+
         const APP_KEYS = [
             Consts::APP_ANDROID,
             Consts::APP_ANDROID_TV,

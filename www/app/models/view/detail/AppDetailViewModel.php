@@ -4,6 +4,7 @@
     namespace app\models\view\detail;
 
 
+    use app\models\view\BtnViewModel;
     use app\models\view\ImageViewModel;
 
     class AppDetailViewModel {
@@ -17,6 +18,10 @@
          */
         private array $modifications;
         private bool $hasHidden;
+        /**
+         * @var BtnViewModel[]
+         */
+        private array $otherLinks;
 
         /**
          * AppDetailViewModel constructor.
@@ -26,6 +31,7 @@
          * @param ImageViewModel $image
          * @param AppModViewModel[] $modifications
          * @param bool $hasHidden
+         * @param BtnViewModel[] $otherLinks
          */
         public function __construct(
             string $id,
@@ -33,7 +39,8 @@
             ?string $desc,
             ImageViewModel $image,
             array $modifications,
-            bool $hasHidden
+            bool $hasHidden,
+            array $otherLinks = []
         ) {
             $this->id = $id;
             $this->name = $name;
@@ -41,6 +48,7 @@
             $this->image = $image;
             $this->modifications = $modifications;
             $this->hasHidden = $hasHidden;
+            $this->otherLinks = $otherLinks;
         }
 
         /**
@@ -83,5 +91,12 @@
          */
         public function hasHidden(): bool {
             return $this->hasHidden;
+        }
+
+        /**
+         * @return BtnViewModel[]
+         */
+        public function otherLinks(): array {
+            return $this->otherLinks;
         }
     }

@@ -3,12 +3,18 @@
 
     namespace app\models;
 
+    use app\models\detail\AppSource;
+
     class AppItem {
         private string $id;
         private AppTarget $target;
         private MultiImage $image;
         private string $name;
         private ?string $desc;
+        /**
+         * @var AppSource[]
+         */
+        private array $links;
 
         /**
          * AppItem constructor.
@@ -17,19 +23,22 @@
          * @param MultiImage $image
          * @param string $name
          * @param ?string $desc
+         * @param AppSource[] $links
          */
         public function __construct(
             string $id,
             AppTarget $target,
             MultiImage $image,
             string $name,
-            ?string $desc = null
+            ?string $desc = null,
+            array $links = []
         ) {
             $this->id = $id;
             $this->target = $target;
             $this->image = $image;
             $this->name = $name;
             $this->desc = $desc;
+            $this->links = $links;
         }
 
         /**
@@ -65,5 +74,12 @@
          */
         public function getDesc(): ?string {
             return $this->desc;
+        }
+
+        /**
+         * @return AppSource[]
+         */
+        public function getLinks(): array {
+            return $this->links;
         }
     }

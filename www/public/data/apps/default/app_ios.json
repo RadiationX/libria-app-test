@@ -1,5 +1,15 @@
 {
   "id": "ios",
+  "links": [
+    {
+      "title": "Способ установки",
+      "link": "https://github.com/anilibria/anilibria-ios#установка"
+    },
+    {
+      "title": "GitHub Репозиторий",
+      "link": "https://github.com/anilibria/anilibria-ios"
+    }
+  ],
   "modifications": [
     {
       "os": "ios",

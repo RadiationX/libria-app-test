@@ -6,11 +6,14 @@
 
     use app\common\BrowserInfo;
     use app\common\Consts;
+    use app\common\Resources;
     use app\common\Utils;
     use app\models\AppItem;
     use app\models\AppMapper;
+    use app\models\detail\AppSource;
     use app\models\detail\AppUpdate;
     use app\models\detail\AppModification;
+    use app\models\view\BtnViewModel;
     use app\models\view\detail\AppDetailViewModel;
     use app\models\view\detail\AppModViewModel;
     use app\models\view\ImageViewModel;
@@ -59,15 +62,38 @@
                 }
                 return AppMapper::toModViewModel($mod, $appDetail, $appItem, $isHidden);
             }, $stableMods);
+
+            $otherBtns = $this::getOtherBtns($appItem->getLinks());
             $app = new AppDetailViewModel(
                 $appItem->getId(),
                 $appItem->getName(),
                 $appItem->getDesc(),
                 new ImageViewModel($appItem->getImage(), "app_image"),
                 $modViewModels,
-                $hasHidden
+                $hasHidden,
+                $otherBtns
             );
             return $this->tpl->render($app);
+        }
+
+        /**
+         * @param AppSource[] $sources
+         * @return BtnViewModel[]
+         */
+        private static function getOtherBtns(array $sources): array {
+            return array_map(function (AppSource $source) {
+                $icon = null;
+                if (key_exists($source->getType(), Resources::LINK_PRIMARY)) {
+                    $icon = Resources::LINK_PRIMARY[$source->getType()];
+                    $icon = "/res/icons/{$icon}";
+                }
+                return new BtnViewModel(
+                    $source->getLink(),
+                    $source->getTitle(),
+                    $icon,
+                    [BtnViewModel::CLASS_SMALL]
+                );
+            }, $sources);
         }
 
         /**

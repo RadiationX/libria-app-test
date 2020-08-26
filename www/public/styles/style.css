@@ -8,6 +8,7 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(216, 53, 65, 0.03);
 }
 html {
   font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, Verdana, sans-serif;
@@ -209,9 +210,6 @@ body.debug:before {
 .main.detail .app_mod {
   display: flex;
   flex-direction: column;
-  margin-top: 16px;
-  margin-left: 8px;
-  margin-right: 8px;
 }
 .main.detail a.btn_download {
   text-decoration: none;
@@ -220,9 +218,12 @@ body.debug:before {
   border-radius: 24px;
   line-height: 48px;
   padding-left: 20px;
-  padding-right: 24px;
+  padding-right: 20px;
   border: 1px solid #d83541;
   position: relative;
+  margin-left: 8px;
+  margin-right: 8px;
+  margin: 8px;
 }
 .main.detail a.btn_download:hover {
   background: rgba(216, 53, 65, 0.03);

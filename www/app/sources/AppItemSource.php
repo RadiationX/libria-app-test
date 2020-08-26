@@ -6,6 +6,7 @@
     use app\common\Consts;
     use app\common\Utils;
     use app\models\AppItem;
+    use app\models\detail\AppSource;
     use app\models\ImageBuilder;
     use app\models\MultiImage;
 
@@ -34,7 +35,14 @@
                         ->with(1, "app_android_mobile-w480.jpg")
                         ->with(2, "app_android_mobile-w840.jpg"),
                     "AniLibria",
-                    "Удобное Android приложение для просмотра аниме"
+                    "Удобное Android приложение для просмотра аниме",
+                    [
+                        new AppSource(
+                            "Исходный код",
+                            "https://github.com/anilibria/anilibria-app",
+                            Consts::LINK_TYPE_GITHUB
+                        )
+                    ]
                 ),
                 Consts::APP_ANDROID_TV => new AppItem(
                     Consts::APP_ANDROID_TV,
@@ -43,7 +51,14 @@
                         ->with(1, "app_android_tv-w480.jpg")
                         ->with(2, "app_android_tv-w840.jpg"),
                     "AniLibria TV",
-                    "То, что нужно, для просмотра аниме на диване"
+                    "То, что нужно, для просмотра аниме лёжа на диване",
+                    [
+                        new AppSource(
+                            "Исходный код",
+                            "https://github.com/anilibria/anilibria-app",
+                            Consts::LINK_TYPE_GITHUB
+                        )
+                    ]
                 ),
                 Consts::APP_IOS => new AppItem(
                     Consts::APP_IOS,
@@ -52,7 +67,18 @@
                         ->with(1, "app_ios-w480.jpg")
                         ->with(2, "app_ios-w840.jpg"),
                     "AniLibria",
-                    "Удобное iOS приложение для просмотра аниме"
+                    "Удобное iOS приложение для просмотра аниме",
+                    [
+                        new AppSource(
+                            "Способ установки",
+                            "https://github.com/anilibria/anilibria-ios#установка"
+                        ),
+                        new AppSource(
+                            "Исходный код",
+                            "https://github.com/anilibria/anilibria-ios",
+                            Consts::LINK_TYPE_GITHUB
+                        )
+                    ]
                 ),
                 Consts::APP_MACOS_CATALYST => new AppItem(
                     Consts::APP_MACOS_CATALYST,
@@ -61,7 +87,14 @@
                         ->with(1, "app_macos_catalyst-w480.jpg")
                         ->with(2, "app_macos_catalyst-w840.jpg"),
                     "AniLibria Catalyst",
-                    "[Экспериментально] iOS приложение, портированное на macOS"
+                    "[Экспериментально] iOS приложение, портированное на macOS",
+                    [
+                        new AppSource(
+                            "Исходный код",
+                            "https://github.com/anilibria/anilibria-ios",
+                            Consts::LINK_TYPE_GITHUB
+                        )
+                    ]
                 ),
                 Consts::APP_WINTEN => new AppItem(
                     Consts::APP_WINTEN,
@@ -70,7 +103,22 @@
                         ->with(1, "app_winten-w480.jpg")
                         ->with(2, "app_winten-w840.jpg"),
                     "AniLibria",
-                    "Специально для Windows 10"
+                    "Специально для Windows 10",
+                    [
+                        new AppSource(
+                            "Решение проблемы с видео",
+                            "https://github.com/anilibria/anilibria-win/blob/master/doc/video-issues.md"
+                        ),
+                        new AppSource(
+                            "Решение проблемы с установкой",
+                            "https://github.com/anilibria/anilibria-win/blob/master/doc/video-issues.md"
+                        ),
+                        new AppSource(
+                            "Исходный код",
+                            "https://github.com/anilibria/anilibria-win",
+                            Consts::LINK_TYPE_GITHUB
+                        )
+                    ]
                 ),
                 Consts::APP_ANILIBRIX => new AppItem(
                     Consts::APP_ANILIBRIX,
@@ -79,7 +127,7 @@
                         ->with(1, "app_cross_anilibrix-w480.jpg")
                         ->with(2, "app_cross_anilibrix-w840.jpg"),
                     "AniLibriX",
-                    "Отличный аниме-кинотеатр на любого вашего компьютера"
+                    "Аниме-кинотеатр на любого вашего компьютера"
                 ),
                 Consts::APP_QT => new AppItem(
                     Consts::APP_QT,
@@ -88,7 +136,18 @@
                         ->with(1, "app_cross_qt-w480.jpg")
                         ->with(2, "app_cross_qt-w840.jpg"),
                     "AniLibria QT",
-                    "Отличный аниме-кинотеатр на любого вашего компьютера"
+                    "Аниме-кинотеатр на любого вашего компьютера",
+                    [
+                        new AppSource(
+                            "Способ установки",
+                            "https://anilibria.github.io/anilibria-win/index.html#download"
+                        ),
+                        new AppSource(
+                            "Исходный код",
+                            "https://github.com/anilibria/anilibria-winmaclinux",
+                            Consts::LINK_TYPE_GITHUB
+                        )
+                    ]
                 )
             ];
         }

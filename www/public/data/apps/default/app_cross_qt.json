@@ -1,5 +1,15 @@
 {
   "id": "cross_qt",
+  "links": [
+    {
+      "title": "Способ установки",
+      "link": "https://anilibria.github.io/anilibria-win/index.html#download"
+    },
+    {
+      "title": "GitHub Репозиторий",
+      "link": "https://github.com/anilibria/anilibria-winmaclinux"
+    }
+  ],
   "modifications": [
     {
       "os": "linux",

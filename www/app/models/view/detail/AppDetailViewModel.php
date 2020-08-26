@@ -4,12 +4,14 @@
     namespace app\models\view\detail;
 
 
+    use app\models\view\ImageViewModel;
+
     class AppDetailViewModel {
 
         private string $id;
         private string $name;
         private ?string $desc;
-        private string $image;
+        private ImageViewModel $image;
         /**
          * @var AppModViewModel[]
          */
@@ -21,7 +23,7 @@
          * @param string $id
          * @param string $name
          * @param ?string $desc
-         * @param string $image
+         * @param ImageViewModel $image
          * @param AppModViewModel[] $modifications
          * @param bool $hasHidden
          */
@@ -29,7 +31,7 @@
             string $id,
             string $name,
             ?string $desc,
-            string $image,
+            ImageViewModel $image,
             array $modifications,
             bool $hasHidden
         ) {
@@ -63,9 +65,9 @@
         }
 
         /**
-         * @return string
+         * @return ImageViewModel
          */
-        public function getImage(): string {
+        public function getImage(): ImageViewModel {
             return $this->image;
         }
 

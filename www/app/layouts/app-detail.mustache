@@ -1,7 +1,9 @@
 <main class="main detail clearfix">
 
     <div class="image_wrapper">
-        <img src="{{ getImage }}" class="app_image" alt="app_image">
+        {{# getImage }}
+            {{> multi-image-partial }}
+        {{/getImage}}
     </div>
 
     <div class="app_name">{{ getName }}</div>

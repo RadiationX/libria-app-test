@@ -15,6 +15,7 @@
     use app\models\view\AppItemViewModel;
     use app\models\view\BtnViewModel;
     use app\models\view\detail\AppModViewModel;
+    use app\models\view\ImageViewModel;
 
     class AppMapper {
 
@@ -23,7 +24,7 @@
             return new AppItemViewModel(
                 $item->getId(),
                 AppUrlHelper::getAppUrl($item->getId()),
-                Utils::fileTime("/res/images/{$item->getImage()}"),
+                new ImageViewModel($item->getImage(), "app_image"),
                 Utils::fileTime("/res/icons/{$icRes}"),
                 $item->getName(),
                 AppTitleHelper::createTitle($item->getTarget())

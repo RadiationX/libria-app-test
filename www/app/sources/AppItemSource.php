@@ -6,6 +6,8 @@
     use app\common\Consts;
     use app\common\Utils;
     use app\models\AppItem;
+    use app\models\ImageBuilder;
+    use app\models\MultiImage;
 
     class AppItemSource {
 
@@ -28,49 +30,63 @@
                 Consts::APP_ANDROID => new AppItem(
                     Consts::APP_ANDROID,
                     Consts::appTargets()[Consts::APP_ANDROID],
-                    'app_android_mobile.png',
+                    MultiImage::from("app_android_mobile-w840.jpg")
+                        ->with(1, "app_android_mobile-w480.jpg")
+                        ->with(2, "app_android_mobile-w840.jpg"),
                     "AniLibria",
                     "Удобное Android приложение для просмотра аниме"
                 ),
                 Consts::APP_ANDROID_TV => new AppItem(
                     Consts::APP_ANDROID_TV,
                     Consts::appTargets()[Consts::APP_ANDROID_TV],
-                    'app_android_tv.png',
+                    MultiImage::from("app_android_tv-w840.jpg")
+                        ->with(1, "app_android_tv-w480.jpg")
+                        ->with(2, "app_android_tv-w840.jpg"),
                     "AniLibria TV",
                     "То, что нужно, для просмотра аниме на диване"
                 ),
                 Consts::APP_IOS => new AppItem(
                     Consts::APP_IOS,
                     Consts::appTargets()[Consts::APP_IOS],
-                    'app_ios.png',
+                    MultiImage::from("app_ios-w840.jpg")
+                        ->with(1, "app_ios-w480.jpg")
+                        ->with(2, "app_ios-w840.jpg"),
                     "AniLibria",
                     "Удобное iOS приложение для просмотра аниме"
                 ),
                 Consts::APP_MACOS_CATALYST => new AppItem(
                     Consts::APP_MACOS_CATALYST,
                     Consts::appTargets()[Consts::APP_MACOS_CATALYST],
-                    'app_macos_catalyst.png',
+                    MultiImage::from("app_macos_catalyst.jpg")
+                        ->with(1, "app_macos_catalyst.jpg")
+                        ->with(2, "app_macos_catalyst.jpg"),
                     "AniLibria Catalyst",
                     "[Экспериментально] iOS приложение, портированное на macOS"
                 ),
                 Consts::APP_WINTEN => new AppItem(
                     Consts::APP_WINTEN,
                     Consts::appTargets()[Consts::APP_WINTEN],
-                    'app_winten.png',
+                    MultiImage::from("app_winten-w840.jpg")
+                        ->with(1, "app_winten-w480.jpg")
+                        ->with(2, "app_winten-w840.jpg"),
                     "AniLibria",
                     "Специально для Windows 10"
                 ),
                 Consts::APP_ANILIBRIX => new AppItem(
                     Consts::APP_ANILIBRIX,
                     Consts::appTargets()[Consts::APP_ANILIBRIX],
-                    'app_cross_anilibrix.png',
+                    MultiImage::from("app_cross_anilibrix-w840.jpg")
+                        ->with(1, "app_cross_anilibrix-w480.jpg")
+                        ->with(2, "app_cross_anilibrix-w840.jpg"),
                     "AniLibriX",
                     "Отличный аниме-кинотеатр на любого вашего компьютера"
                 ),
                 Consts::APP_QT => new AppItem(
                     Consts::APP_QT,
                     Consts::appTargets()[Consts::APP_QT],
-                    'app_cross_qt.png',
+                    MultiImage::from("app_cross_qt-w840.jpg")
+                        ->with(1, "app_cross_qt-w480.jpg")
+                        ->with(2, "app_cross_qt-w840.jpg"),
                     "AniLibria QT",
                     "Отличный аниме-кинотеатр на любого вашего компьютера"
                 )

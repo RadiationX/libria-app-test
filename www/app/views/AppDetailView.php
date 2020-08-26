@@ -13,6 +13,7 @@
     use app\models\detail\AppModification;
     use app\models\view\detail\AppDetailViewModel;
     use app\models\view\detail\AppModViewModel;
+    use app\models\view\ImageViewModel;
     use app\sources\AppDetailSource;
     use Mustache_Engine;
     use Mustache_Template;
@@ -62,7 +63,7 @@
                 $appItem->getId(),
                 $appItem->getName(),
                 $appItem->getDesc(),
-                "/res/images/{$appItem->getImage()}",
+                new ImageViewModel($appItem->getImage(), "app_image"),
                 $modViewModels,
                 $hasHidden
             );

@@ -6,7 +6,7 @@
     class AppItemViewModel {
         private string $id;
         private string $link;
-        private string $image;
+        private ImageViewModel $image;
         private string $icon;
         private string $name;
         private string $platform;
@@ -15,7 +15,7 @@
          * AppItemViewModel constructor.
          * @param string $id
          * @param string $link
-         * @param string $image
+         * @param ImageViewModel $image
          * @param string $icon
          * @param string $name
          * @param string $platform
@@ -23,7 +23,7 @@
         public function __construct(
             string $id,
             string $link,
-            string $image,
+            ImageViewModel $image,
             string $icon,
             string $name,
             string $platform
@@ -51,9 +51,9 @@
         }
 
         /**
-         * @return string
+         * @return ImageViewModel
          */
-        public function getImage(): string {
+        public function getImage(): ImageViewModel {
             return $this->image;
         }
 

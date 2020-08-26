@@ -1,6 +1,8 @@
 <a href="{{getLink}}" class="app_link bottom_line {{getType}}">
     <div>
-        <img src="{{getImage}}" class="app_image" alt="image">
+        {{# getImage }}
+            {{> multi-image-partial }}
+        {{/getImage}}
     </div>
 
     <span class="app_name_row">

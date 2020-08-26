@@ -140,7 +140,7 @@
                     [
                         new AppSource(
                             "Способ установки",
-                            "https://anilibria.github.io/anilibria-win/index.html#download"
+                            "https://github.com/anilibria/anilibria-winmaclinux#как-установить-и-обновлять"
                         ),
                         new AppSource(
                             "Исходный код",

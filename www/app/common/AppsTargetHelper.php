@@ -37,7 +37,7 @@
                 function ($req) use ($os, $type) {
                     $hasPlatform = in_array($os, $req->getOsList());
                     $hasType = in_array($type, $req->getTypeList());
-                    return $hasPlatform && $hasType;
+                    return $hasPlatform ;
                 },
                 ARRAY_FILTER_USE_BOTH
             );
@@ -51,9 +51,21 @@
          * @return string[]
          */
         private static function fetchOtherAppKeys(): array {
+            $type = BrowserInfo::getType();
             $clientAppKeys = self::getClientAppKeys();
             $allAppKeys = array_keys(Consts::appTargets());
-            return array_values(array_diff($allAppKeys, $clientAppKeys));
+            $otherAppKeys = array_values(array_diff($allAppKeys, $clientAppKeys));
+
+            $appsByClientType = array_filter(
+                $otherAppKeys,
+                function ($appKey) use ($type) {
+                    return in_array($type, Consts::appTargets()[$appKey]->getTypeList());
+                },
+                ARRAY_FILTER_USE_BOTH
+            );
+            $appsByClientType = array_values($appsByClientType);
+            Utils::sortByOrder($otherAppKeys, $appsByClientType);
+            return $otherAppKeys;
         }
 
         /**

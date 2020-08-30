@@ -10,15 +10,16 @@
     use app\common\DI;
     use app\common\Utils;
 
-    function pageStat(){
+    function pageStat() {
         global $startTime;
-        return "Page generated in ".round((microtime(true) - $startTime), 4)." seconds. Peak memory usage: ".round(memory_get_peak_usage()/1048576, 2)." MB";
+        return "Page generated in " . round((microtime(true) - $startTime), 4) . " seconds. Peak memory usage: " . round(memory_get_peak_usage() / 1048576, 2) . " MB";
     }
+
 ?>
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
@@ -35,6 +36,12 @@
     <meta name="msapplication-config" content="/res/favicon/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
     <!-- /Favicon -->
+
+    <!--<meta name="og:url" content=""/>
+    <meta name="og:site_name" content="IMDb"/>
+    <meta name="og:title" content="The Rock"/>
+    <meta name="og:description" content="A group of U.S. Marines, under command of..."/>
+    <meta name="og:image" content="http://ia.media-imdb.com/rock.jpg"/>-->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php Utils::includeCss("/styles/style.css"); ?>

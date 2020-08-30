@@ -6,6 +6,7 @@
 
     class AppUrlHelper {
 
+        // !!! Не меняй значения, а то сломаются ссылки
         private const APP_ANDROID = 'android';
         private const APP_ANDROID_TV = 'androidtv';
         private const APP_IOS = 'ios';

@@ -3,18 +3,18 @@
 
 {{# getOpenGraph}}
     {{# getUrl }}
-        <meta name="og:url" content="{{ . }}"/>
+        <meta property="og:url" content="{{ . }}"/>
     {{/ getUrl }}
     {{# getSiteName }}
-        <meta name="og:site_name" content="{{ . }}"/>
+        <meta property="og:site_name" content="{{ . }}"/>
     {{/ getSiteName }}
     {{# getTitle }}
-        <meta name="og:title" content="{{ . }}"/>
+        <meta property="og:title" content="{{ . }}"/>
     {{/ getTitle }}
     {{# getDescription }}
-        <meta name="og:description" content="{{ . }}"/>
+        <meta property="og:description" content="{{ . }}"/>
     {{/ getDescription }}
     {{# getImage }}
-        <meta name="og:image" content="{{ . }}"/>
+        <meta property="og:image" content="{{ . }}"/>
     {{/ getImage }}
 {{/getOpenGraph}}

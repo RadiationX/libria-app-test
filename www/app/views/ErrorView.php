@@ -15,7 +15,7 @@
         private Mustache_Template $tplList;
 
         /**
-         * AppListView constructor.
+         * ErrorView constructor.
          * @param Mustache_Engine $mustache
          */
         public function __construct(Mustache_Engine $mustache) {

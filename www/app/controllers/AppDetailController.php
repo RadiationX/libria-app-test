@@ -47,14 +47,11 @@
         }
 
         private function fillPageData(AppItem $appItem) {
-            $hostPath = "https://{$_SERVER['HTTP_HOST']}";
             $title = $appItem->getName() . " для " . AppTitleHelper::createTitle($appItem->getTarget());
-            $url = $hostPath . AppUrlHelper::getAppUrl($appItem->getId());
-            $image = $hostPath . Utils::fileTime("/res/images/{$appItem->getImage()->getDefault()}");
             $this->headData->setTitle($title);
             $this->headData->setDescription($appItem->getDesc());
             $this->headData->getOpenGraph()
-                ->setUrl($url)
-                ->setImage($image);
+                ->setUrl(AppUrlHelper::getAppUrl($appItem->getId()))
+                ->setImage($appItem->getImage()->getDefault());
         }
     }

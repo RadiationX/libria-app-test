@@ -19,7 +19,7 @@
             $this->setDescription("Приложения для просмотра аниме на AniLibria.tv");
             $this->openGraph
                 ->setSiteName("AniLibria.app")
-                ->setImage("");
+                ->setImage("og_image.jpg");
         }
 
         /**

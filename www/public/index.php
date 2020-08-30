@@ -1,4 +1,7 @@
 <?
+
+    $startTime = microtime(true);
+
     require dirname(__DIR__) . '/vendor/autoload.php';
     require dirname(__DIR__) . '/app/common/Consts.php';
 
@@ -7,6 +10,10 @@
     use app\common\DI;
     use app\common\Utils;
 
+    function pageStat(){
+        global $startTime;
+        return "Page generated in ".round((microtime(true) - $startTime), 4)." seconds. Peak memory usage: ".round(memory_get_peak_usage()/1048576, 2)." MB";
+    }
 ?>
 
 
@@ -50,6 +57,8 @@
     $router->run();
 
 ?>
+
+<script>console.log("<?php echo pageStat(); ?>");</script>
 </body>
 
 </html>

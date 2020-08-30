@@ -1,19 +1,5 @@
 {
   "id": "winten",
-  "links": [
-    {
-      "title": "Решение проблемы с видео",
-      "link": "https://github.com/anilibria/anilibria-win/blob/master/doc/video-issues.md"
-    },
-    {
-      "title": "Решение проблемы с установкой",
-      "link": "https://github.com/anilibria/anilibria-win/blob/master/doc/video-issues.md"
-    },
-    {
-      "title": "GitHub Репозиторий",
-      "link": "https://github.com/anilibria/anilibria-win"
-    }
-  ],
   "modifications": [
     {
       "os": "windows",

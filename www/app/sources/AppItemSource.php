@@ -110,10 +110,6 @@
                             "https://github.com/anilibria/anilibria-win/blob/master/doc/video-issues.md"
                         ),
                         new AppSource(
-                            "Решение проблемы с установкой",
-                            "https://github.com/anilibria/anilibria-win/blob/master/doc/video-issues.md"
-                        ),
-                        new AppSource(
                             "Исходный код",
                             "https://github.com/anilibria/anilibria-win",
                             Consts::LINK_TYPE_GITHUB

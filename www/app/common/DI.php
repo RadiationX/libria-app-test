@@ -5,10 +5,12 @@
 
     use app\controllers\AppDetailController;
     use app\controllers\AppListController;
+    use app\models\head\PageHeadData;
     use app\sources\AppDetailSource;
     use app\sources\AppItemSource;
     use app\views\AppDetailView;
     use app\views\AppListView;
+    use app\views\PageHeadView;
     use Bramus\Router\Router;
     use Mustache_Engine;
     use Mustache_Loader_FilesystemLoader;
@@ -24,9 +26,11 @@
 
         private static ?AppDetailView $appDetailView = null;
         private static ?AppListView $appListView = null;
+        private static ?PageHeadView $pageHeadView = null;
 
         private static ?AppItemSource $appListSource = null;
         private static ?AppDetailSource $appDetailSource = null;
+        private static ?PageHeadData $pageHeadData = null;
 
         public static function appItemSource(): AppItemSource {
             return Utils::lazyInit(self::$appListSource, function () {
@@ -40,6 +44,12 @@
             });
         }
 
+        public static function pageHeadData(): PageHeadData {
+            return Utils::lazyInit(self::$pageHeadData, function () {
+                return new PageHeadData();
+            });
+        }
+
         public static function appDetailView(): AppDetailView {
             return Utils::lazyInit(self::$appDetailView, function () {
                 return new AppDetailView(self::mustache());
@@ -49,6 +59,12 @@
         public static function appListView(): AppListView {
             return Utils::lazyInit(self::$appListView, function () {
                 return new AppListView(self::mustache());
+            });
+        }
+
+        public static function pageHeadView(): PageHeadView {
+            return Utils::lazyInit(self::$pageHeadView, function () {
+                return new PageHeadView(self::mustache());
             });
         }
 
@@ -67,7 +83,8 @@
                 return new AppDetailController(
                     self::appDetailView(),
                     self::appDetailSource(),
-                    self::appItemSource()
+                    self::appItemSource(),
+                    self::pageHeadData()
                 );
             });
         }

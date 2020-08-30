@@ -15,7 +15,7 @@
         private ?array $list = null;
 
         /**
-         * @return array
+         * @return AppItem[]
          */
         public function getList(): array {
             return Utils::lazyInit($this->list, function () {
@@ -127,7 +127,7 @@
                         ->with(1, "app_cross_anilibrix-w480.jpg")
                         ->with(2, "app_cross_anilibrix-w840.jpg"),
                     "AniLibriX",
-                    "Аниме-кинотеатр на любого вашего компьютера"
+                    "Аниме-кинотеатр для любого вашего компьютера"
                 ),
                 Consts::APP_QT => new AppItem(
                     Consts::APP_QT,
@@ -136,7 +136,7 @@
                         ->with(1, "app_cross_qt-w480.jpg")
                         ->with(2, "app_cross_qt-w840.jpg"),
                     "AniLibria QT",
-                    "Аниме-кинотеатр на любого вашего компьютера",
+                    "Аниме-кинотеатр для любого вашего компьютера",
                     [
                         new AppSource(
                             "Способ установки",

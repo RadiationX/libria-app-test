@@ -1,0 +1,20 @@
+<title>{{ getTitle }}</title>
+<meta name="description" content="{{ getDescription }}">
+
+{{# getOpenGraph}}
+    {{# getUrl }}
+        <meta name="og:url" content="{{ . }}"/>
+    {{/ getUrl }}
+    {{# getSiteName }}
+        <meta name="og:site_name" content="{{ . }}"/>
+    {{/ getSiteName }}
+    {{# getTitle }}
+        <meta name="og:title" content="{{ . }}"/>
+    {{/ getTitle }}
+    {{# getDescription }}
+        <meta name="og:description" content="{{ . }}"/>
+    {{/ getDescription }}
+    {{# getImage }}
+        <meta name="og:image" content="{{ . }}"/>
+    {{/ getImage }}
+{{/getOpenGraph}}

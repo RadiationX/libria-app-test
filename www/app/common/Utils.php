@@ -18,7 +18,6 @@
         }
 
         public static function fileTime(string $relativePath): string {
-            //return $relativePath;
             $file = $_SERVER['DOCUMENT_ROOT'] . $relativePath;
             if (!file_exists($file)) {
                 return $relativePath;

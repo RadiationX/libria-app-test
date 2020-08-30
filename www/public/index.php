@@ -6,11 +6,12 @@
     use app\common\Consts;
     use app\common\DI;
     use app\common\Utils;
+    use app\views\ErrorView;
 
     $router = DI::router();
 
     $router->set404(function () {
-        echo '404, нет такой страницы';
+        echo DI::errorView()->render('404, нет такой страницы');
     });
 
     $router->get('/', function () {
@@ -20,17 +21,17 @@
     });
 
     $router->get('/app/{urlAppId}/', function ($urlAppId) use ($router) {
-        try {
-            $appId = AppUrlHelper::getAppKey($urlAppId);
-            $controller = DI::appDetailController();
-            echo $controller->showDetail($appId);
-        } catch (Throwable $ex) {
-            echo "Произошла ошибка";
-        }
+        $appId = AppUrlHelper::getAppKey($urlAppId);
+        $controller = DI::appDetailController();
+        echo $controller->showDetail($appId);
     });
 
     ob_start();
-    $router->run();
+    try {
+        $router->run();
+    } catch (Throwable $throwable) {
+        echo DI::errorView()->render("Произошла ошибка: " . $throwable->getMessage());
+    }
     $pageContent = ob_get_contents();
     ob_end_clean();
 

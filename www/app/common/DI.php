@@ -10,6 +10,7 @@
     use app\sources\AppItemSource;
     use app\views\AppDetailView;
     use app\views\AppListView;
+    use app\views\ErrorView;
     use app\views\PageHeadView;
     use Bramus\Router\Router;
     use Mustache_Engine;
@@ -27,6 +28,7 @@
         private static ?AppDetailView $appDetailView = null;
         private static ?AppListView $appListView = null;
         private static ?PageHeadView $pageHeadView = null;
+        private static ?ErrorView $errorView = null;
 
         private static ?AppItemSource $appListSource = null;
         private static ?AppDetailSource $appDetailSource = null;
@@ -65,6 +67,12 @@
         public static function pageHeadView(): PageHeadView {
             return Utils::lazyInit(self::$pageHeadView, function () {
                 return new PageHeadView(self::mustache());
+            });
+        }
+
+        public static function errorView(): ErrorView {
+            return Utils::lazyInit(self::$errorView, function () {
+                return new ErrorView(self::mustache());
             });
         }
 

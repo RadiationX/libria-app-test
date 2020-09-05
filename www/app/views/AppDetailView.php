@@ -87,12 +87,14 @@
                     $icon = Resources::LINK_PRIMARY[$source->getType()];
                     $icon = "/res/icons/{$icon}";
                 }
-                return new BtnViewModel(
+                $btn = new BtnViewModel(
                     $source->getLink(),
                     $source->getTitle(),
                     $icon,
                     [BtnViewModel::CLASS_SMALL]
                 );
+                $btn->setOpenNewTab(true);
+                return $btn;
             }, $sources);
         }
 

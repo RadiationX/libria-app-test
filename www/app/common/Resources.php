@@ -17,6 +17,8 @@
         const IC_LINUX_WHITE = "ic_linux_white.svg";
         const IC_MACBOOK_PRIMARY = "ic_macbook_primary.svg";
         const IC_MACBOOK_WHITE = "ic_macbook_white.svg";
+        const IC_TELEGRAM_WHITE = "ic_telegram_white.svg";
+        const IC_TELEGRAM_PRIMARY = "ic_telegram_primary.svg";
         const IC_WINDOWS_PRIMARY = "ic_windows_primary.svg";
         const IC_WINDOWS_WHITE = "ic_windows_white.svg";
 
@@ -57,11 +59,13 @@
         ];
 
         const LINK_PRIMARY = [
-            Consts::LINK_TYPE_GITHUB => self::IC_GITHUB_PRIMARY
+            Consts::LINK_TYPE_GITHUB => self::IC_GITHUB_PRIMARY,
+            Consts::LINK_TYPE_TELEGRAM => self::IC_TELEGRAM_PRIMARY
         ];
 
         const LINK_WHITE = [
-            Consts::LINK_TYPE_GITHUB => self::IC_GITHUB_WHITE
+            Consts::LINK_TYPE_GITHUB => self::IC_GITHUB_WHITE,
+            Consts::LINK_TYPE_TELEGRAM=>self::IC_TELEGRAM_WHITE
         ];
 
     }

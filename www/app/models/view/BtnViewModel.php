@@ -17,6 +17,7 @@
          * @var string[]
          */
         private array $classes;
+        private bool $openNewTab = false;
 
         /**
          * BtnViewModel constructor.
@@ -54,5 +55,14 @@
 
         public function getClasses(): string {
             return join(" ", $this->classes);
+        }
+
+        public function isOpenNewTab(): bool {
+            return $this->openNewTab;
+        }
+
+        public function setOpenNewTab(bool $openNewTab): BtnViewModel {
+            $this->openNewTab = $openNewTab;
+            return $this;
         }
     }

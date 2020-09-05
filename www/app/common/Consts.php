@@ -36,6 +36,7 @@
         const CHANNEL_BETA = "beta";
 
         const LINK_TYPE_GITHUB = "github";
+        const LINK_TYPE_TELEGRAM = "telegram";
 
         const APP_KEYS = [
             Consts::APP_ANDROID,

@@ -1,4 +1,4 @@
-<a href="{{ getLink }}" class="btn_download {{ getClasses }}">
+<a href="{{ getLink }}" class="btn_download {{ getClasses }}" {{# isOpenNewTab }} target="_blank" rel="noopener noreferrer" {{/ isOpenNewTab}}>
     {{# getIcon }}
         <img src="{{ . }}" alt="app_icon" class="app_icon">
     {{/ getIcon }}

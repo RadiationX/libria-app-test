@@ -123,7 +123,19 @@
                         ->with(1, "app_cross_anilibrix-w480.jpg")
                         ->with(2, "app_cross_anilibrix-w840.jpg"),
                     "AniLibriX",
-                    "Аниме-кинотеатр для любого вашего компьютера"
+                    "Аниме-кинотеатр для любого вашего компьютера",
+                    [
+                        new AppSource(
+                            "Обновления",
+                            "https://t.me/anilibrix",
+                            Consts::LINK_TYPE_TELEGRAM
+                        ),
+                        new AppSource(
+                            "Обсуждение",
+                            "https://t.me/joinchat/AnXQOFLrOfQpONSCJKyDCA",
+                            Consts::LINK_TYPE_TELEGRAM
+                        )
+                    ]
                 ),
                 Consts::APP_QT => new AppItem(
                     Consts::APP_QT,

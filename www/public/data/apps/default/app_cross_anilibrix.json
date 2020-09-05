@@ -10,7 +10,7 @@
       "sources": [
         {
           "title": "github",
-          "link": "https://t.me/anilibrix"
+          "link": "/upload/AniLibrix-linux-x86_64-1.3.14.AppImage"
         }
       ]
     },
@@ -20,7 +20,7 @@
       "sources": [
         {
           "title": "github",
-          "link": "https://t.me/anilibrix"
+          "link": "/upload/AniLibrix-mac-1.3.14.dmg"
         }
       ]
     },
@@ -30,7 +30,7 @@
       "sources": [
         {
           "title": "github",
-          "link": "https://t.me/anilibrix"
+          "link": "/upload/AniLibrix-win-1.3.14-setup.exe"
         }
       ]
     }

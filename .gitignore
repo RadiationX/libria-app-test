@@ -8,6 +8,7 @@ logs
 .DS_STORE
 vendor/
 composer.lock
+upload/
 phpmyadmin/config/config\.secret\.inc\.php
 
 phpmyadmin/config/config\.user\.inc\.php

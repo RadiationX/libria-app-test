@@ -132,8 +132,13 @@
                         ),
                         new AppSource(
                             "Обсуждение",
-                            "https://t.me/joinchat/AnXQOFLrOfQpONSCJKyDCA",
+                            "https://t.me/joinchat/Uus59A0THj8krIMI",
                             Consts::LINK_TYPE_TELEGRAM
+                        ),
+                        new AppSource(
+                            "Исходный код",
+                            "https://github.com/pavloniym/anilibrix",
+                            Consts::LINK_TYPE_GITHUB
                         )
                     ]
                 ),

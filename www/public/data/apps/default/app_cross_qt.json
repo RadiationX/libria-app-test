@@ -10,7 +10,7 @@
       "sources": [
         {
           "title": "github",
-          "link": "https://github.com/anilibria/anilibria-winmaclinux/releases/download/1.2.12/anilibria_1.2.12.amd64.deb"
+          "link": "https://github.com/anilibria/anilibria-winmaclinux/releases/download/2.2.25/anilibria_2.2.25_amd64.deb"
         }
       ]
     },
@@ -20,7 +20,7 @@
       "sources": [
         {
           "title": "github",
-          "link": "https://github.com/anilibria/anilibria-winmaclinux/releases/download/1.2.12/anilibria_macos_1.2.12.dmg"
+          "link": "https://github.com/anilibria/anilibria-winmaclinux/releases/download/2.2.25/anilibria_macos_2.2.25.dmg"
         }
       ]
     },
@@ -30,7 +30,7 @@
       "sources": [
         {
           "title": "github",
-          "link": "https://github.com/anilibria/anilibria-winmaclinux/releases/download/1.2.12/anilibria_windows_1.2.12.zip"
+          "link": "https://github.com/anilibria/anilibria-winmaclinux/releases/download/2.2.25/anilibria_windows_2.2.25.zip"
         }
       ]
     }
